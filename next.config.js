@@ -1,0 +1,12 @@
+module.exports = {
+  basePath: '',
+  images: {
+    domains: ['images.unsplash.com'],
+  },
+  swcMinify: true,
+  transpilePackages: ['@ionic/react', '@ionic/core', '@stencil/core', 'ionicons'],
+  typescript: {
+    // Enable type checking and other TypeScript features
+    enable: true,
+ },
+}
