@@ -24,6 +24,15 @@ import '../styles/variables.css';
 import '../styles/intro.css';
 import '../styles/fonts.css';
 
+
+import 'swiper/css';
+import 'swiper/css';
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css/scrollbar";
+import "swiper/css/parallax";
+import '@ionic/react/css/ionic-swiper.css';
+
 function MyApp({ Component, pageProps }) {
   return (
     <>

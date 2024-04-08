@@ -1,7 +1,6 @@
 .intro-bg {
   --background: #5B4DBC;
 }
-
 .into-img {
   width: 250%;
   object-fit: cover;
@@ -125,12 +124,12 @@ ion-card-content {
 .char-img {
   max-width: 300px; /* Adjusted to 3x assuming the original max-width was 100px */
   margin: 0 auto;
+  height: 250px;
 }
 
 .char-text {
-  position: absolute;
-  top: -50px; /* Adjust based on your text size */
-  width: 100%;
+  width: 150px;
+  height: 50px;
   text-align: center;
 }
 
@@ -159,3 +158,4 @@ ion-card-content {
   right: 50px; /* Adjust distance from the character */
   z-index: 3;
 }
+ 

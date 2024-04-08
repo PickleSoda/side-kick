@@ -47,4 +47,9 @@ export interface Habit {
       id: string;
       items?: { name: string }[];
   }
-  
+  export interface Character {
+    img: any;
+    name: string;
+    text: any;
+    info: string;
+  }

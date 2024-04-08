@@ -1,64 +1,95 @@
-import React, { useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom'; // Ensure you import useHistory
+import React from "react";
+import { useHistory } from "react-router-dom";
 import {
   IonPage,
   IonContent,
   IonImg,
-  IonIcon,
-  IonCard, IonCardContent,
-  IonButton
-} from '@ionic/react';
+  IonCard,
+  IonCardContent,
+  IonSpinner,
+  IonChip,
+} from "@ionic/react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination } from "swiper/modules";
 
-import { arrowForwardOutline } from 'ionicons/icons';
-
-import BackgroundImg from '../../../public/img/main-bg.png';
+import BackgroundImg from "../../../public/img/main-bg.png";
 
 const Intro = () => {
   const history = useHistory();
-  const [headerText, setHeaderText] = useState("Let's start your ");
-  const [highlightedHeaderText, setHighlightedHeaderText] = useState("journey");
-  const [contentText, setContentText] = useState("Lorem ipsum dolor sit amet, consectetur adipiscing elit. In non turpis lectus. Aliquam fringilla, nunc sit amet consequat dignissim, nisi risus dapibus erat, quis vehicula...");
-  const [clickCounter, setClickCounter] = useState(0);
+  const slides = [
+    {
+      headerText: "Let's start your ",
+      highlightedHeaderText: "journey",
+      contentText:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In non turpis lectus. Aliquam fringilla, nunc sit amet consequat dignissim, nisi risus dapibus erat, quis vehicula...",
+    },
+    {
+      headerText: "Build ",
+      highlightedHeaderText: "new habits",
+      contentText:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In non turpis lectus. Aliquam fringilla, nunc sit amet consequat dignissim, nisi risus dapibus erat, quis vehicula...",
+    },
+    {
+      headerText: "With an ",
+      highlightedHeaderText: "accountability partner",
+      contentText:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In non turpis lectus. Aliquam fringilla, nunc sit amet consequat dignissim, nisi risus dapibus erat, quis vehicula...",
+    },
+    {
+      headerText: "Start your ",
+      highlightedHeaderText: "journey",
+    },
+  ];
 
-  const handleNextClick = () => {
-    const nextCounter = clickCounter + 1;
-    setClickCounter(nextCounter);
-
-    switch (nextCounter) {
-      case 1:
-        setHeaderText("Build ");
-        setHighlightedHeaderText("new habits");
-        setContentText("Lorem ipsum dolor sit amet, consectetur adipiscing elit. In non turpis lectus. Aliquam fringilla, nunc sit amet consequat dignissim, nisi risus dapibus erat, quis vehicula...");
-        break;
-      case 2:
-        setHeaderText("With an ");
-        setHighlightedHeaderText("accountability partner");
-        setContentText("Lorem ipsum dolor sit amet, consectetur adipiscing elit. In non turpis lectus. Aliquam fringilla, nunc sit amet consequat dignissim, nisi risus dapibus erat, quis vehicula...");
-        break;
-      default:
-        history.push('/character-select');
-        break;
+  const handleSwiperChange = (index) => {
+    console.log(index);
+    if (index == slides.length - 1) {
+      setTimeout(() => {
+        history.push("/character-select");
+      }, 1000);
     }
   };
-
 
   return (
     <IonPage>
       <IonContent className="intro-bg">
-        <IonImg
-          className='into-img'
-          src={BackgroundImg.src}
-        />
-        <div className='into-div'>
-          <h1>{headerText}<span className='colored-text'>{highlightedHeaderText}</span></h1>
-          <IonCard>
-            <IonCardContent>{contentText}</IonCardContent>
-          </IonCard>
-
-          <IonButton className='next-button' onClick={handleNextClick}>
-            <IonIcon icon={arrowForwardOutline} className='next-icon'></IonIcon>
-          </IonButton>
-        </div>
+        <IonImg className="into-img" src={BackgroundImg.src} />
+        <Swiper
+          modules={[Pagination]}
+          pagination={{
+            clickable: true,
+          }}
+          onSlideChange={(swiper) => {
+            handleSwiperChange(swiper.activeIndex);
+          }}
+          style={{
+            "--swiper-pagination-color": "#FFBA08",
+            "--swiper-pagination-bullet-inactive-color": "#999999",
+            "--swiper-pagination-bullet-inactive-opacity": "1",
+            "--swiper-pagination-bullet-size": "16px",
+            "--swiper-pagination-bullet-horizontal-gap": "6px",
+          }}
+        >
+          {slides.map((slide, index) => (
+            <SwiperSlide key={index}>
+              <div className="into-div">
+                <h1 className="h-20">
+                  {slide.headerText}
+                  <span className="colored-text">
+                    {slide.highlightedHeaderText}
+                  </span>
+                </h1>
+                {slide.contentText ? (
+                  <IonCard>
+                    <IonCardContent>{slide.contentText}</IonCardContent>
+                  </IonCard>
+                ) : (
+                  <IonSpinner name="circular"></IonSpinner>
+                )}
+              </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
       </IonContent>
     </IonPage>
   );
