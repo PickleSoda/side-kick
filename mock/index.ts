@@ -1,4 +1,4 @@
-import { Image, Notification, List,Character } from '../Types';
+import { IImage, INotification, IList, ICharacter } from '../Types';
 
 import FoxImg from "../public/chars/fox/fox.svg";
 import FoxText from "../public/chars/fox/fox-name.svg";
@@ -15,7 +15,7 @@ export const images: string[] = [
   '/img/c3.avif',
 ];
 
-export const homeItems: Image[] = [
+export const homeItems: IImage[] = [
   {
       title: 'Exploring Maui',
       type: 'Blog',
@@ -42,14 +42,14 @@ export const homeItems: Image[] = [
   },
 ];
 
-export const notifications: Notification[] = [
+export const notifications: INotification[] = [
   { title: 'New friend request', when: '6 hr' },
   { title: 'Please change your password', when: '1 day' },
   { title: 'You have a new message', when: '2 weeks' },
   { title: 'Welcome to the app!', when: '1 month' },
 ];
 
-export const lists: List[] = [
+export const lists: IList[] = [
   {
       name: 'Groceries',
       id: 'groceries',
@@ -71,7 +71,7 @@ export const lists: List[] = [
 
 
 
-export const characters: Character[] = [
+export const characters: ICharacter[] = [
   {
     img: FoxImg,
     name: "fox",

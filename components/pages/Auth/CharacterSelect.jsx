@@ -36,7 +36,7 @@ const CharacterSelect = () => {
 
   return (
     <IonPage>
-      <IonContent className="char-bg">
+      <IonContent className="char-bg content-div">
         <div className="flex p-2">
           <IonButton fill="clear" onClick={() => history.push("/")}>
             <IonIcon

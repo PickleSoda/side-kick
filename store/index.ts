@@ -1,9 +1,9 @@
 import { Store as PullStateStore } from "pullstate";
-import { Store } from '../Types';
+import { IStore } from '../Types';
 
 import { lists, homeItems, notifications } from "../mock";
 
-const initialState: Store = {
+const initialState: IStore = {
   currentIndex: 0,
   safeAreaTop: 0,
   safeAreaBottom: 0,

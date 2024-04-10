@@ -4,11 +4,12 @@ import { StatusBar, Style } from '@capacitor/status-bar';
 
 import { IonReactRouter } from '@ionic/react-router';
 import { Redirect, Route } from 'react-router-dom';
-import Alarm from './pages/Auth/Alarm';
+import Alarm from './pages/Auth/Alarm.tsx';
 import Tabs from './pages/Tabs';
 import Intro from './pages/Auth/Intro';
 import CharacterSelect from './pages/Auth/CharacterSelect';
-
+import Signin from './pages/Auth/Signin.jsx';
+import Signup from './pages/Auth/Signup.jsx';
 // Import useStoreState from Pullstate
 import { useStoreState } from 'pullstate';
 // Import your userStore
@@ -43,6 +44,9 @@ const AppShell = () => {
               <Route path="/character-select" render={() => <CharacterSelect />} />
               <Route path="/" render={() => <Redirect to="/intro" />} exact={true} />
               <Route path="/alarm" render={() => <Alarm/>} />
+              <Route path="/signup" render={() => <Signup/>} />
+              <Route path="/signin" render={() => <Signin/>} />
+              
             </>
           )}
         </IonRouterOutlet>
