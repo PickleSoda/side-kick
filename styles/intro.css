@@ -158,4 +158,25 @@ ion-card-content {
   right: 50px; /* Adjust distance from the character */
   z-index: 3;
 }
- 
+.clock-gradient-top {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 33.0208333333vw;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(0deg, transparent 10%, #665EE4 60%,#665EE4 100%);
+}
+.clock-gradient-bottom {
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 33.0208333333vw;
+  z-index: 1;
+  background: linear-gradient(180deg, transparent 10%, #7FA1F6 60%,#7FA1F6 100%);
+  pointer-events: none;
+}

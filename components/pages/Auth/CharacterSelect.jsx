@@ -22,7 +22,7 @@ const CharacterSelect = () => {
   console.log(characters);
 
   const handleNext = () => {
-    setAvatar(characters[currentIndex].name);
+    setAvatar(characters[currentIndex]);
     history.push("/alarm");
   };
 

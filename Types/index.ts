@@ -10,7 +10,7 @@ export interface Habit {
     isAuth: boolean;
     username: string;
     email: string;
-    avatar: string;
+    avatar: Character;
     habits: Habit[]; // Add an array of Habit objects
   }
   
@@ -21,9 +21,9 @@ export interface Habit {
     menuOpen: boolean;
     notificationsOpen: boolean;
     currentPage: string | null;
-    homeItems: any[];
-    lists: any[];
-    notifications: any[];
+    homeItems: object[];
+    lists: object[];
+    notifications: object[];
     settings: {
       enableNotifications: boolean;
     };
@@ -48,7 +48,7 @@ export interface Habit {
       items?: { name: string }[];
   }
   export interface Character {
-    img: any;
+    img: string;
     name: string;
     text: any;
     info: string;
