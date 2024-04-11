@@ -121,7 +121,7 @@ const Signup = (props) => {
               <IonButton
               expand="block"
                 onClick={() => {
-                  history.push("/character-select");
+                  history.push("/signin");
                 }}
               >
                 Sign up

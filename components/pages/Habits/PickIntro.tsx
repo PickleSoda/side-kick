@@ -10,7 +10,7 @@ import {
     IonMenuButton,
   } from '@ionic/react';
   import { useState } from 'react';
- import PickHabitComponent from './PickHabitComponent.jsx';
+ import PickHabitComponent from './PickHabitComponent.tsx';
   
   
   const PickHabitIntro = () => {

@@ -2,6 +2,7 @@ import Head from 'next/head';
 import Script from 'next/script';
 import { setupIonicReact } from '@ionic/react';
 import '../styles/fonts.css';
+import {initializeUserState} from '../store/userStore';
 
 import 'tailwindcss/tailwind.css';
 /* Core CSS required for Ionic components to work properly */
@@ -32,6 +33,8 @@ import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import "swiper/css/parallax";
 import '@ionic/react/css/ionic-swiper.css';
+
+initializeUserState();
 
 function MyApp({ Component, pageProps }) {
   return (

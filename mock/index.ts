@@ -110,23 +110,27 @@ export const habits: IHabit[] = [
     description: "Go for a run or hit the gym",
     duration: 30, // Assuming duration is in days
     selectDate: new Date(),
+    chosen: false,
   },
   {
     name: "Read",
     description: "Read a book or an article",
     duration: 7, // Assuming duration is in days
     selectDate: new Date(),
+    chosen: false,
   },
   {
     name: "Meditate",
     description: "Practice mindfulness and meditation",
     duration: 14, // Assuming duration is in days
     selectDate: new Date(),
+    chosen: false,
   },
   {
     name: "Drink Water",
     description: "Stay hydrated throughout the day",
     duration: 1, // Assuming duration is in days
     selectDate: new Date(),
+    chosen: false,
   },
 ];

@@ -108,7 +108,10 @@ const SingIn = (props) => {
               <IonButton
               expand="block"
                 onClick={() => {
-                  history.push("/character-select");
+                  userStore.update((s) => {
+                    s.isAuth = true;
+                  });
+                  history.push("/pickUserHabit");
                 }}>
                 Sign In
               </IonButton>

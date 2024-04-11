@@ -4,6 +4,7 @@ export interface IHabit {
   description: string;
   duration: number; // Assuming duration is in days
   selectDate: Date;
+  chosen: boolean;
 }
 export interface IUser {
   isAuth: boolean;
@@ -51,7 +52,7 @@ export interface IAlarm {
 }
 
 export interface ICharacter {
-  img: any;
+  img: IImg;
   name: string;
   text: any;
   info: string;
@@ -61,4 +62,11 @@ export interface IAlarm {
   hours: number;
   minutes: number;
   meridiem: "am" | "pm";
+}
+export interface IImg {
+    blurHeight: number;
+    blurWidth: number;
+    height: number;
+    src: string;
+    width: number;
 }

@@ -1,5 +1,5 @@
 .intro-bg {
-  --background: #5B4DBC;
+  --background: linear-gradient(to top, #7FA1F6, #665EE4);
 }
 .into-img {
   width: 250%;

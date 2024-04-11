@@ -14,7 +14,7 @@ import { useHistory } from "react-router-dom";
 import { chevronBackOutline } from "ionicons/icons";
 import { useStoreState } from "pullstate";
 import { userStore, setAlarmState } from "../../../store/userStore";
-import {IAlarm} from '../../../Types'
+import { IAlarm } from "../../../Types";
 
 const Alarm = () => {
   const history = useHistory();
@@ -25,8 +25,8 @@ const Alarm = () => {
     meridiem: "am",
   });
 
-  const handleHourChange = (value:number) => {
-    console.log(value)
+  const handleHourChange = (value: number) => {
+    console.log(value);
 
     setAlarm((prevAlarm) => ({
       ...prevAlarm,
@@ -34,8 +34,8 @@ const Alarm = () => {
     }));
   };
 
-  const handleMinuteChange = (value:number) => {
-    console.log(value)
+  const handleMinuteChange = (value: number) => {
+    console.log(value);
 
     setAlarm((prevAlarm) => ({
       ...prevAlarm,
@@ -43,18 +43,16 @@ const Alarm = () => {
     }));
   };
 
-  const handleMeridiemChange = (value:number) => {
-    const meridiem = value?'am':'pm';
+  const handleMeridiemChange = (value: number) => {
+    const meridiem = value ? "am" : "pm";
     setAlarm((prevAlarm) => ({
       ...prevAlarm,
       meridiem: meridiem,
     }));
-    console.log(alarm)
+    console.log(alarm);
   };
-  
-  const selectedCharacter = useStoreState(userStore, (s) => s.avatar);
 
-  
+  const selectedCharacter = useStoreState(userStore, (s) => s.avatar);
 
   const handleNext = () => {
     setAlarmState(alarm);
@@ -74,7 +72,9 @@ const Alarm = () => {
               className="text-white"
             ></IonIcon>
           </IonButton>
-          <h3 className="text-white font-bold text-base absolute left-1/2 -translate-x-1/2">Wake Up Time</h3>
+          <h3 className="text-white font-bold text-base absolute left-1/2 -translate-x-1/2">
+            Wake Up Time
+          </h3>
         </div>
         <div className="h-64">
           <IonGrid className="w-full p-5 relative">
@@ -90,10 +90,9 @@ const Alarm = () => {
                     handleHourChange(swiper.activeIndex);
                   }}
                 >
-                   <SwiperSlide style={{ height: "80px" }}><h1 className="font-bold text-7xl">
-                        {" "}
-                       
-                      </h1></SwiperSlide>
+                  <SwiperSlide style={{ height: "80px" }}>
+                    <h1 className="font-bold text-7xl"> </h1>
+                  </SwiperSlide>
 
                   {Array.from({ length: 12 }, (_, index) => (
                     <SwiperSlide key={index} style={{ height: "80px" }}>
@@ -103,10 +102,9 @@ const Alarm = () => {
                       </h1>
                     </SwiperSlide>
                   ))}
-                  <SwiperSlide style={{ height: "80px" }}><h1 className="font-bold text-7xl">
-                        {" "}
-                       
-                      </h1></SwiperSlide>
+                  <SwiperSlide style={{ height: "80px" }}>
+                    <h1 className="font-bold text-7xl"> </h1>
+                  </SwiperSlide>
                 </Swiper>
               </IonCol>
               <IonCol size="auto" className=" flex justify-center items-center">
@@ -120,13 +118,12 @@ const Alarm = () => {
                   className="w-24 h-64"
                   initialSlide={0}
                   onSlideChange={(swiper) => {
-                    handleMinuteChange((swiper.activeIndex)*5);
+                    handleMinuteChange(swiper.activeIndex * 5);
                   }}
                 >
-                 <SwiperSlide style={{ height: "80px" }}><h1 className="font-bold text-7xl">
-                        {" "}
-                       
-                      </h1></SwiperSlide>
+                  <SwiperSlide style={{ height: "80px" }}>
+                    <h1 className="font-bold text-7xl"> </h1>
+                  </SwiperSlide>
                   {Array.from({ length: 12 }, (_, index) => (
                     <SwiperSlide key={index} style={{ height: "80px" }}>
                       <h1 className="font-bold text-7xl">
@@ -135,12 +132,10 @@ const Alarm = () => {
                       </h1>
                     </SwiperSlide>
                   ))}
-                  <SwiperSlide style={{ height: "80px" }}><h1 className="font-bold text-7xl">
-                        {" "}
-                       
-                      </h1></SwiperSlide>
+                  <SwiperSlide style={{ height: "80px" }}>
+                    <h1 className="font-bold text-7xl"> </h1>
+                  </SwiperSlide>
                 </Swiper>
-
               </IonCol>
               <IonCol className=" flex justify-center items-center">
                 <Swiper
@@ -171,20 +166,24 @@ const Alarm = () => {
             <span className="clock-gradient-bottom"></span>
           </IonGrid>
         </div>
-        <IonImg src={selectedCharacter.img.src} className="absolute z-10 char-img right-0 !-mt-14" />
+        <IonImg
+          src={selectedCharacter.img.src}
+          className="absolute z-10 char-img right-0 !-mt-14"
+        />
         <div className="text-div">
           <h1>
-          When do you
-          <br />
+            When do you
+            <br />
             <span className="colored-text">wake up?</span>
           </h1>
-          <p>Lorem Ipsum Dolor Sit Amet,
-Ipsum Dolor Sit Ame</p>
-          <IonButton expand="block" onClick={handleNext}  className="white-background font-bold" >
-            <p className="text-lg">
-            DONE!
-          </p>
-            </IonButton>
+          <p>Lorem Ipsum Dolor Sit Amet, Ipsum Dolor Sit Ame</p>
+          <IonButton
+            expand="block"
+            onClick={handleNext}
+            className="white-background font-bold"
+          >
+            <p className="text-lg">DONE!</p>
+          </IonButton>
         </div>
       </IonContent>
     </IonPage>

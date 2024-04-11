@@ -2,6 +2,7 @@
 import { Store as PullStateStore } from "pullstate";
 import { IUser, IHabit, IAlarm } from "../Types";
 import { characters } from "../mock";
+import { Preferences } from '@capacitor/preferences';
 const initialState: IUser = {
   isAuth: false,
   username: "",
@@ -16,7 +17,7 @@ const userStore = new PullStateStore(initialState);
 // Existing actions
 const setUser = (user: IUser) => userStore.update(() => user);
 const setAuth = (isAuth: boolean) =>
-  userStore.update((state) => ({ ...state, isAuth }));
+  userStore.update((state: IUser) => ({ ...state, isAuth }));
 const setUsername = (username: string) =>
   userStore.update((state) => ({ ...state, username }));
 const setEmail = (email: string) =>
@@ -30,11 +31,30 @@ const addHabit = (habit: IHabit) =>
 const removeHabit = (habitName: string) =>
   userStore.update((state) => ({
     ...state,
-    habits: state.habits.filter((habit:IHabit) => habit.name !== habitName),
+    habits: state.habits.filter((habit: IHabit) => habit.name !== habitName),
   }));
-const setAlarmState = (alarm: IAlarm) =>
-    userStore.update((state) => ({ ...state, alarm: alarm }));
 
+const setAlarmState = (alarm: IAlarm) =>
+  userStore.update((state) => ({ ...state, alarm: alarm }));
+
+
+    const initializeUserState = async () => {
+      const savedState = await Preferences.get({ key: 'userState' });
+      if (savedState && typeof savedState.value === 'string') {
+      const parsedState = JSON.parse(savedState.value);
+      userStore.update((state) => ({
+        ...parsedState,
+      }));
+      }
+    };
+
+    userStore.createReaction(
+      (state) => state,
+      (state: IUser) => {
+        Preferences.set({ key: 'userState', value: JSON.stringify(state) });
+        document.documentElement.classList.toggle('dark');
+      }
+    );
 // Export the store and actions
 export {
   userStore,
@@ -46,4 +66,5 @@ export {
   addHabit,
   removeHabit,
   setAlarmState,
+  initializeUserState,
 };

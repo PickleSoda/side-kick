@@ -43,7 +43,7 @@ const AppShell = () => {
                 exact={true}
               />
               <Route
-                path="/pickIntro"
+                path="/pickUserHabit"
                 render={() => <PickHabitIntro />}
                 exact={true}
               />

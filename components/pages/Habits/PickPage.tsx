@@ -11,7 +11,7 @@ import {
   } from '@ionic/react';
   import { useState } from 'react';
   import { notificationsOutline } from 'ionicons/icons';
- import PickHabitComponent from './PickHabitComponent.jsx';
+ import PickHabitComponent from './PickHabitComponent.tsx';
   
   
   const PickHabitPage = () => {

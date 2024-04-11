@@ -1,17 +1,22 @@
 module.exports = {
-  basePath: "",
+  basePath: '',
   images: {
-    domains: ["images.unsplash.com"],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+        port: '',
+        pathname: '**',
+      },
+    ],
+    unoptimized: true,
   },
+  output: 'export',
   swcMinify: true,
   transpilePackages: [
-    "@ionic/react",
-    "@ionic/core",
-    "@stencil/core",
-    "ionicons",
+    '@ionic/react',
+    '@ionic/core',
+    '@stencil/core',
+    'ionicons',
   ],
-  typescript: {
-    // Enable type checking and other TypeScript features
-    enable: true,
-  },
 };

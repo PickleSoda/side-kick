@@ -59,7 +59,13 @@ body {
   --background: white; /* This sets the background color to white */
   --color:var(--ion-background-color); /* This sets the text color to black */ /* This sets the border color to black */
  }
- 
+ .white-background-opacity{
+  --background: rgba(255, 255, 255, 0.7); /* This sets the background color to white */
+  --color:var(--ion-background-color); /* This sets the text color to black */ /* This sets the border color to black */
+ }
+.transparent-bg{
+  --background: transparent; /* This sets the background color to white */
+}
 
 /** Styles for React Toggle */
 
