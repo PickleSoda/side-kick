@@ -11,6 +11,10 @@ body {
   font-family: 'poppins-medium', sans-serif;
 }
 
+.toolbar-background {
+  ----ion-background-color: var(--ion-toolbar-background, #0d0d0d);
+  --color: var(--ion-text-color, #ffffff);
+}
 /**
  * Styles for the Icon UI component.
  *
@@ -50,6 +54,12 @@ body {
   height: 100%;
   width: 100%;
 }
+
+.white-background{
+  --background: white; /* This sets the background color to white */
+  --color:var(--ion-background-color); /* This sets the text color to black */ /* This sets the border color to black */
+ }
+ 
 
 /** Styles for React Toggle */
 

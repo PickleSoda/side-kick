@@ -82,10 +82,12 @@ ion-card-content {
   position: absolute;
   bottom: 60px;
   left: 20px;
+  right: 20px;
+  z-index: 20;
 }
 
 .text-div h1{
-  font-family: 'poppins-bold', sans-serif;
+  
   font-size: 36px;
 }
 .content-div {
@@ -145,8 +147,6 @@ ion-card-content {
   padding: 0 30px; /* Adds padding to the text */
   width: auto;
 }
-
-
 .arrow-left, .arrow-right {
   font-size: 24px;
   cursor: pointer;
@@ -157,7 +157,6 @@ ion-card-content {
   left: 50px; /* Adjust distance from the character */
   z-index: 3;
 }
-
 .arrow-right {
   right: 50px; /* Adjust distance from the character */
   z-index: 3;
@@ -171,7 +170,7 @@ ion-card-content {
   height: 200px;
   z-index: 1;
   pointer-events: none;
-  background: linear-gradient(0deg, transparent 10%, #665EE4 60%,#665EE4 100%);
+  background: linear-gradient(0deg, transparent 10%, #6D70E9 60%,#6A68E7 100%);
 }
 .clock-gradient-bottom {
   display: block;
@@ -181,6 +180,6 @@ ion-card-content {
   width: 100%;
   height: 180px;
   z-index: 1;
-  background: linear-gradient(180deg, transparent 10%, #7FA1F6 60%,#7FA1F6 100%);
+  background: linear-gradient(180deg, transparent 10%, #7381ED 60%,#768AF0 500%, transparent 10%);
   pointer-events: none;
 }

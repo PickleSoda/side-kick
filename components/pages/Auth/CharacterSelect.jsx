@@ -5,25 +5,27 @@ import {
   IonImg,
   IonIcon,
   IonButton,
+  IonNavLink,
   IonFooter,
   IonToolbar,
   IonTitle,
 } from "@ionic/react";
+import { useIonRouter } from "@ionic/react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Navigation } from "swiper/modules";
 import { chevronBackOutline } from "ionicons/icons";
 import { setAvatar } from "../../../store/userStore";
-
 import { useHistory } from "react-router-dom";
 
 import { characters } from "../../../mock/index";
 
 const CharacterSelect = () => {
   console.log(characters);
-
+  const router = useIonRouter()
   const handleNext = () => {
     setAvatar(characters[currentIndex]);
-    history.push("/alarm");
+    router.routeInfo.routeDirection = 'forward'
+    router.push('/alarm', 'forward', 'replace')
   };
 
   const history = useHistory();
@@ -45,7 +47,7 @@ const CharacterSelect = () => {
               className="text-white"
             ></IonIcon>
           </IonButton>
-          <h3 className="text-white font-bold">Choose a character</h3>
+          <h3 className="text-white font-bold text-base absolute left-1/2 -translate-x-1/2">Choose a character</h3>
         </div>
 
         <Swiper
@@ -72,8 +74,10 @@ const CharacterSelect = () => {
             Choose your <span className="colored-text">character</span>
           </h1>
           <p>{characters[currentIndex].info}</p>
-          <IonButton expand="block" onClick={handleNext}>
+          <IonButton expand="block" routerDirection="forward" routerLink="/alarm" onClick={handleNext} className="white-background font-bold">
+          <p className="text-lg">
             NEXT
+          </p>
           </IonButton>
         </div>
       </IonContent>

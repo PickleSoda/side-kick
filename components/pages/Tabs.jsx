@@ -2,7 +2,7 @@ import { Redirect, Route } from 'react-router-dom';
 import { IonRouterOutlet, IonTabs, IonTabBar, IonTabButton, IonIcon, IonLabel } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import { cog, flash, list } from 'ionicons/icons';
-import PickHabit from './Habits/pick';
+import PickPage from './Habits/PickPage.tsx';
 import Home from './Feed';
 import Lists from './Lists';
 import ListDetail from './ListDetail';
@@ -17,7 +17,7 @@ const Tabs = () => {
         <Route path="/tabs/lists/:listId" render={() => <ListDetail />} exact={true} />
         <Route path="/tabs/settings" render={() => <Settings />} exact={true} />
         <Route path="/tabs" render={() => <Redirect to="/tabs/feed" />} exact={true} />
-        <Route path="/tabs/habits/pick" render={() => <PickHabit/>} exact={true} />
+        <Route path="/tabs/habits/pick" render={() => <PickPage/>} exact={true} />
       </IonRouterOutlet>
       <IonTabBar slot="bottom">
         <IonTabButton tab="tab1" href="/tabs/feed">

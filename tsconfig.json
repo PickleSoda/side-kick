@@ -109,7 +109,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-  ],
+, "components/pages/Habits/AddUserHabit.jsx"  ],
   "exclude": [
     "node_modules"
   ]

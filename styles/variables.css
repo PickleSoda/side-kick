@@ -3,6 +3,32 @@ http://ionicframework.com/docs/theming/ */
 
 /** Ionic CSS Variables **/
 :root {
+	--ion-background-color: #665EE4;
+  ;
+	--ion-background-color-rgb: 109,112,233;
+  --track-background-checked: var(--ion-color-primary);
+	--ion-text-color: #ffffff;
+	--ion-text-color-rgb: 255,255,255;
+
+	--ion-color-step-50: #7477ea;
+	--ion-color-step-100: #7c7eeb;
+	--ion-color-step-150: #8385ec;
+	--ion-color-step-200: #8a8ded;
+	--ion-color-step-250: #9294ef;
+	--ion-color-step-300: #999bf0;
+	--ion-color-step-350: #a0a2f1;
+	--ion-color-step-400: #a7a9f2;
+	--ion-color-step-450: #afb0f3;
+	--ion-color-step-500: #b6b8f4;
+	--ion-color-step-550: #bdbff5;
+	--ion-color-step-600: #c5c6f6;
+	--ion-color-step-650: #cccdf7;
+	--ion-color-step-700: #d3d4f8;
+	--ion-color-step-750: #dbdbfa;
+	--ion-color-step-800: #e2e2fb;
+	--ion-color-step-850: #e9eafc;
+	--ion-color-step-900: #f0f1fd;
+	--ion-color-step-950: #f8f8fe;
   --ion-default-font: 'poppins-medium', sans-serif;
   /** primary **/
   --ion-color-primary: #3880ff;
@@ -86,7 +112,7 @@ http://ionicframework.com/docs/theming/ */
   body {
     --ion-default-font: 'poppins-medium', sans-serif;
 
-    --ion-color-primary: #428cff;
+    --ion-color-primary: #FEB74C;
     --ion-color-primary-rgb: 66, 140, 255;
     --ion-color-primary-contrast: #ffffff;
     --ion-color-primary-contrast-rgb: 255, 255, 255;
@@ -154,7 +180,7 @@ http://ionicframework.com/docs/theming/ */
    * iOS Dark Theme
    * -------------------------------------------
    */
-
+/* 
   .ios body {
     --ion-background-color: #000000;
     --ion-background-color-rgb: 0, 0, 0;
@@ -187,14 +213,14 @@ http://ionicframework.com/docs/theming/ */
     --ion-item-background: #000000;
 
     --ion-card-background: #1c1c1d;
-  }
+  } */
 
   /*
    * Material Design Dark Theme
    * -------------------------------------------
    */
 
-  .md body {
+  /* .md body {
     --ion-default-font: 'poppins-medium', sans-serif;
     --ion-background-color: #121212;
     --ion-background-color-rgb: 18, 18, 18;
@@ -231,5 +257,5 @@ http://ionicframework.com/docs/theming/ */
     --ion-tab-bar-background: #1f1f1f;
 
     --ion-card-background: #1e1e1e;
+  } */
   }
-}

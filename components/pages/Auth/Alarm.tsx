@@ -74,17 +74,17 @@ const Alarm = () => {
               className="text-white"
             ></IonIcon>
           </IonButton>
-          <h3 className="text-white font-bold">What time do you wake up</h3>
+          <h3 className="text-white font-bold text-base absolute left-1/2 -translate-x-1/2">Wake Up Time</h3>
         </div>
-        <div className="h-80">
-          <IonGrid className="w-80 relative">
+        <div className="h-64">
+          <IonGrid className="w-full p-5 relative">
             <IonRow>
               <IonCol>
                 <Swiper
                   direction={"vertical"}
                   slidesPerView={3}
                   freeMode={true}
-                  className="w-24 h-80"
+                  className="w-24 h-64"
                   initialSlide={9}
                   onSlideChange={(swiper) => {
                     handleHourChange(swiper.activeIndex);
@@ -117,7 +117,7 @@ const Alarm = () => {
                   direction={"vertical"}
                   slidesPerView={3}
                   freeMode={true}
-                  className="w-24 h-80"
+                  className="w-24 h-64"
                   initialSlide={0}
                   onSlideChange={(swiper) => {
                     handleMinuteChange((swiper.activeIndex)*5);
@@ -171,14 +171,20 @@ const Alarm = () => {
             <span className="clock-gradient-bottom"></span>
           </IonGrid>
         </div>
-        <IonImg src={selectedCharacter.img.src} className="char-img !-mr-10" />
+        <IonImg src={selectedCharacter.img.src} className="absolute z-10 char-img right-0 !-mt-14" />
         <div className="text-div">
           <h1>
-            you chose{" "}
-            <span className="colored-text">{selectedCharacter.name}</span>
+          When do you
+          <br />
+            <span className="colored-text">wake up?</span>
           </h1>
-          <p>almost done</p>
-          <IonButton expand="block" onClick={handleNext}>DONE!</IonButton>
+          <p>Lorem Ipsum Dolor Sit Amet,
+Ipsum Dolor Sit Ame</p>
+          <IonButton expand="block" onClick={handleNext}  className="white-background font-bold" >
+            <p className="text-lg">
+            DONE!
+          </p>
+            </IonButton>
         </div>
       </IonContent>
     </IonPage>

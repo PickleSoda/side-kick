@@ -42,7 +42,7 @@ const ListDetail = ({ match }) => {
 
   return (
     <IonPage>
-      <IonHeader>
+      <IonHeader translucent={true}>
         <IonToolbar>
           <IonButtons slot="start">
             <IonBackButton defaultHref="/tabs/lists" />
