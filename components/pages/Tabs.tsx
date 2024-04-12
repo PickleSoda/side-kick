@@ -43,10 +43,9 @@ const Tabs = () => {
           <IonLabel>Habits</IonLabel>
         </IonTabButton>
         <IonTabButton >
-          <IonIcon icon={gitBranchOutline} />
       <div className='circle'></div>
       <IonIcon icon={fingerPrintOutline} className='z-20 absolute h-10 w-10 text-white' />
-          <IonLabel>Habits</IonLabel>
+
         </IonTabButton>
         <IonTabButton tab="tab3" href="/chats">
           <IonIcon icon={chatbubbleEllipsesOutline} />
