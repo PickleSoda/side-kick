@@ -1,8 +1,9 @@
-// userStore.ts
+
 import { Store as PullStateStore } from "pullstate";
-import { IUser, IHabit, IAlarm } from "../Types";
+import { IUser, IHabit, IAlarm, ICharacter } from "../types";
 import { characters } from "../mock";
 import { Preferences } from '@capacitor/preferences';
+import { createPullstateCore } from "pullstate";
 const initialState: IUser = {
   isAuth: false,
   username: "",
@@ -22,7 +23,7 @@ const setUsername = (username: string) =>
   userStore.update((state) => ({ ...state, username }));
 const setEmail = (email: string) =>
   userStore.update((state) => ({ ...state, email }));
-const setAvatar = (avatar: string) =>
+const setAvatar = (avatar: ICharacter) =>
   userStore.update((state) => ({ ...state, avatar }));
 
 // New actions for managing habits
@@ -38,8 +39,10 @@ const setAlarmState = (alarm: IAlarm) =>
   userStore.update((state) => ({ ...state, alarm: alarm }));
 
 
-    const initializeUserState = async () => {
+    export async function initializeUserState  ()  {
+        console.log('Initializing user state');
       const savedState = await Preferences.get({ key: 'userState' });
+      console.log(savedState);
       if (savedState && typeof savedState.value === 'string') {
       const parsedState = JSON.parse(savedState.value);
       userStore.update((state) => ({
@@ -47,6 +50,7 @@ const setAlarmState = (alarm: IAlarm) =>
       }));
       }
     };
+    
 
     userStore.createReaction(
       (state) => state,
@@ -66,5 +70,4 @@ export {
   addHabit,
   removeHabit,
   setAlarmState,
-  initializeUserState,
 };

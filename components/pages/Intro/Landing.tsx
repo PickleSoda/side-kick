@@ -14,7 +14,7 @@ import { Pagination } from "swiper/modules";
 
 import BackgroundImg from "../../../public/img/main-bg.png";
 
-const Intro = () => {
+const Landing = () => {
   const history = useHistory();
   const slides = [
     {
@@ -41,11 +41,11 @@ const Intro = () => {
     },
   ];
 
-  const handleSwiperChange = (index) => {
+  const handleSwiperChange = (index:number) => {
     console.log(index);
     if (index == slides.length - 1) {
       setTimeout(() => {
-        history.push("/character-select");
+        history.push("/choose-character");
       }, 1000);
     }
   };
@@ -55,19 +55,14 @@ const Intro = () => {
       <IonContent className="intro-bg">
         <IonImg className="into-img" src={BackgroundImg.src} />
         <Swiper
+          direction="horizontal"
           modules={[Pagination]}
+          loop={false}
           pagination={{
             clickable: true,
           }}
           onSlideChange={(swiper) => {
             handleSwiperChange(swiper.activeIndex);
-          }}
-          style={{
-            "--swiper-pagination-color": "#FFBA08",
-            "--swiper-pagination-bullet-inactive-color": "#999999",
-            "--swiper-pagination-bullet-inactive-opacity": "1",
-            "--swiper-pagination-bullet-size": "16px",
-            "--swiper-pagination-bullet-horizontal-gap": "6px",
           }}
         >
           {slides.map((slide, index) => (
@@ -95,4 +90,4 @@ const Intro = () => {
   );
 };
 
-export default Intro;
+export default Landing;

@@ -11,41 +11,45 @@ import {
   IonItem,
   IonInput,
 } from "@ionic/react";
-import { Swiper, SwiperSlide } from "swiper/react";
 import { useHistory } from "react-router-dom";
 import { chevronBackOutline } from "ionicons/icons";
 import { useStoreState } from "pullstate";
 import { userStore, setAlarmState } from "../../../store/userStore";
-import { IAlarm } from "../../../Types";
 
-const Signup = (props) => {
+const SingIn = () => {
   // Add your component's state and other initializations here
-    const history = useHistory();
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [confirmPassword, setConfirmPassword] = useState("");
-    const [error, setError] = useState("");
-    const [loading, setLoading] = useState(false);
-    const isAuthorized = useStoreState(userStore, (state) => state.isAuth);
+  const history = useHistory();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+  const isAuthorized = useStoreState(userStore, (state) => state.isAuth);
+  const handleSignIn = () => {
+    // Add your sign in logic here
+    // You can use the state variables to access the user's email and password
+    // You can use the setError function to display an error message to the user
+    // You can use the setLoading function to show a loading indicator while the user is being signed in
+    // You can use the history object to navigate to another page after the user has been signed in
+
+    userStore.update((s) => {
+      s.isAuth = true;
+    });
+    console.log("User signed in");
+    history.push("/habits/pick");
+  };
   return (
     <IonPage>
       <IonContent className="char-bg content-div">
-        <div className="flex p-2">
-          <IonButton fill="clear" onClick={() => history.push("/")}>
-            <IonIcon
-              slot="icon-only"
-              icon={chevronBackOutline}
-              className="text-white"
-            ></IonIcon>
-          </IonButton>
-          <IonButton fill="clear" onClick={() => history.push("/signin")}>
-            <h3 className="text-white font-bold">Sign In</h3>
+        <div className="flex justify-end p-2">
+          <IonButton fill="clear" onClick={() => history.push("/signup")}>
+            <p className="text-white font-bold">Sign up</p>
           </IonButton>
         </div>
         <IonGrid>
           <IonRow>
             <IonCol>
-              <h1>Sign up</h1>
+              <h1>Sign In</h1>
               {/* Add more JSX elements as needed */}
             </IonCol>
           </IonRow>
@@ -106,25 +110,8 @@ const Signup = (props) => {
           </IonRow>
           <IonRow>
             <IonCol>
-              <IonItem>
-                <IonInput
-                  label="Password"
-                  labelPlacement="floating"
-                  type="password"
-                  placeholder="Repeat password"
-                ></IonInput>
-              </IonItem>
-            </IonCol>
-          </IonRow>
-          <IonRow>
-            <IonCol>
-              <IonButton
-              expand="block"
-                onClick={() => {
-                  history.push("/signin");
-                }}
-              >
-                Sign up
+              <IonButton expand="block" onClick={handleSignIn}>
+                Sign In
               </IonButton>
             </IonCol>
           </IonRow>
@@ -134,4 +121,4 @@ const Signup = (props) => {
   );
 };
 
-export default Signup;
+export default SingIn;

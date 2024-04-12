@@ -23,8 +23,6 @@ import '@ionic/react/css/display.css';
 
 import '../styles/global.css';
 import '../styles/variables.css';
-import '../styles/intro.css';
-
 
 import 'swiper/css';
 import 'swiper/css';

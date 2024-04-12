@@ -14,10 +14,15 @@ import {
 import { useParams } from 'react-router-dom';
 
 import Store from '../../store';
-import * as actions from '../../store/actions';
+import * as actions from '../../store/actions.ts';
 import * as selectors from '../../store/selectors';
+import { ListItem, TodoListItem } from '../../mock';
 
-const ListItems = ({ list }) => {
+type ListDetailParams = {
+  listId: string;
+};
+
+const ListItems = ({ list }: { list: TodoListItem }) => {
   return (
     <IonList>
       {(list?.items || []).map((item, key) => (
@@ -27,32 +32,40 @@ const ListItems = ({ list }) => {
   );
 };
 
-const ListItemEntry = ({ list, item }) => (
+const ListItemEntry = ({
+  list,
+  item,
+}: {
+  list: TodoListItem;
+  item: ListItem;
+}) => (
   <IonItem onClick={() => actions.setDone(list, item, !item.done)}>
     <IonLabel>{item.name}</IonLabel>
-    <IonCheckbox checked={item.done || false} slot="end" />
+    <IonCheckbox
+      aria-label={item.name}
+      checked={item.done || false}
+      slot="end"
+    />
   </IonItem>
 );
 
-const ListDetail = ({ match }) => {
+const ListDetail = () => {
   const lists = Store.useState(selectors.getLists);
-  const params = useParams();
+  const params = useParams<ListDetailParams>();
   const { listId } = params;
-  const loadedList = lists.find(l => l.id === listId);
+  const loadedList = lists.find((l:TodoListItem) => l.id === listId);
 
   return (
     <IonPage>
-      <IonHeader translucent={true}>
+      <IonHeader>
         <IonToolbar>
           <IonButtons slot="start">
-            <IonBackButton defaultHref="/tabs/lists" />
+            <IonBackButton defaultHref="/lists" />
           </IonButtons>
-          <IonTitle>{loadedList.name}</IonTitle>
+          <IonTitle>{loadedList?.name}</IonTitle>
         </IonToolbar>
       </IonHeader>
-      <IonContent>
-        <ListItems list={loadedList} />
-      </IonContent>
+      <IonContent>{loadedList && <ListItems list={loadedList} />}</IonContent>
     </IonPage>
   );
 };

@@ -11,13 +11,12 @@ import {
   IonItem,
   IonInput,
 } from "@ionic/react";
-import { Swiper, SwiperSlide } from "swiper/react";
 import { useHistory } from "react-router-dom";
 import { chevronBackOutline } from "ionicons/icons";
 import { useStoreState } from "pullstate";
 import { userStore, setAlarmState } from "../../../store/userStore";
 
-const SingIn = (props) => {
+const Signup = () => {
   // Add your component's state and other initializations here
     const history = useHistory();
     const [email, setEmail] = useState("");
@@ -29,22 +28,16 @@ const SingIn = (props) => {
   return (
     <IonPage>
       <IonContent className="char-bg content-div">
-        <div className="flex p-2">
-          <IonButton fill="clear" onClick={() => history.push("/")}>
-            <IonIcon
-              slot="icon-only"
-              icon={chevronBackOutline}
-              className="text-white"
-            ></IonIcon>
-          </IonButton>
-          <IonButton fill="clear" onClick={() => history.push("/signup")}>
-            <h3 className="text-white font-bold">Sign Up</h3>
+        <div className="flex justify-end p-2">
+
+          <IonButton fill="clear" onClick={() => history.push("/signin")}>
+            <p className="text-white font-bold">Sign In</p>
           </IonButton>
         </div>
         <IonGrid>
           <IonRow>
             <IonCol>
-              <h1>Sign In</h1>
+              <h1>Sign up</h1>
               {/* Add more JSX elements as needed */}
             </IonCol>
           </IonRow>
@@ -105,15 +98,25 @@ const SingIn = (props) => {
           </IonRow>
           <IonRow>
             <IonCol>
+              <IonItem>
+                <IonInput
+                  label="Password"
+                  labelPlacement="floating"
+                  type="password"
+                  placeholder="Repeat password"
+                ></IonInput>
+              </IonItem>
+            </IonCol>
+          </IonRow>
+          <IonRow>
+            <IonCol>
               <IonButton
               expand="block"
                 onClick={() => {
-                  userStore.update((s) => {
-                    s.isAuth = true;
-                  });
-                  history.push("/pickUserHabit");
-                }}>
-                Sign In
+                  history.push("/signin");
+                }}
+              >
+                Sign up
               </IonButton>
             </IonCol>
           </IonRow>
@@ -123,4 +126,4 @@ const SingIn = (props) => {
   );
 };
 
-export default SingIn;
+export default Signup;

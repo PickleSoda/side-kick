@@ -15,8 +15,14 @@ import Store from '../../store';
 import { getNotifications } from '../../store/selectors';
 
 import { close } from 'ionicons/icons';
+import { type NotificationItem } from '../../mock';
+import { INotification } from '../../types';
 
-const NotificationItem = ({ notification }) => (
+const NotificationItem = ({
+  notification,
+}: {
+  notification: NotificationItem;
+}) => (
   <IonItem>
     <IonLabel>{notification.title}</IonLabel>
     <IonNote slot="end">{notification.when}</IonNote>
@@ -26,7 +32,13 @@ const NotificationItem = ({ notification }) => (
   </IonItem>
 );
 
-const Notifications = ({ open, onDidDismiss }) => {
+const Notifications = ({
+  open,
+  onDidDismiss,
+}: {
+  open: boolean;
+  onDidDismiss: () => void;
+}) => {
   const notifications = Store.useState(getNotifications);
 
   return (
@@ -34,7 +46,12 @@ const Notifications = ({ open, onDidDismiss }) => {
       <IonHeader>
         <IonToolbar>
           <IonTitle>Notifications</IonTitle>
-          <IonButton slot="end" fill="clear" color="dark" onClick={onDidDismiss}>
+          <IonButton
+            slot="end"
+            fill="clear"
+            color="dark"
+            onClick={onDidDismiss}
+          >
             <IonIcon icon={close} />
           </IonButton>
         </IonToolbar>
@@ -46,9 +63,9 @@ const Notifications = ({ open, onDidDismiss }) => {
           </IonToolbar>
         </IonHeader>
         <IonList>
-          {/* {notifications.map((notification, i) => (
+          {notifications.map((notification:NotificationItem, i:number) => (
             <NotificationItem notification={notification} key={i} />
-          ))} */}
+          ))}
         </IonList>
       </IonContent>
     </IonModal>

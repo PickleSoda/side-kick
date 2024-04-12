@@ -14,7 +14,8 @@ import { useHistory } from "react-router-dom";
 import { chevronBackOutline } from "ionicons/icons";
 import { useStoreState } from "pullstate";
 import { userStore, setAlarmState } from "../../../store/userStore";
-import { IAlarm } from "../../../Types";
+import { IAlarm } from "../../../types";
+import { useIonRouter } from "@ionic/react";
 
 const Alarm = () => {
   const history = useHistory();
@@ -53,10 +54,12 @@ const Alarm = () => {
   };
 
   const selectedCharacter = useStoreState(userStore, (s) => s.avatar);
+  const router = useIonRouter()
 
   const handleNext = () => {
     setAlarmState(alarm);
-    history.push("/signup");
+    router.push('/signup', 'forward', 'replace')
+
   };
   return (
     <IonPage>
@@ -64,7 +67,7 @@ const Alarm = () => {
         <div className="flex p-2">
           <IonButton
             fill="clear"
-            onClick={() => history.push("/character-select")}
+            routerDirection="back" routerLink="/choose-character"
           >
             <IonIcon
               slot="icon-only"
@@ -167,7 +170,7 @@ const Alarm = () => {
           </IonGrid>
         </div>
         <IonImg
-          src={selectedCharacter.img.src}
+          src={selectedCharacter?.img?.src}
           className="absolute z-10 char-img right-0 !-mt-14"
         />
         <div className="text-div">

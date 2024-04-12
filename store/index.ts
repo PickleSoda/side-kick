@@ -1,10 +1,21 @@
-import { Store as PullStateStore } from "pullstate";
-import { IStore } from '../Types';
+import { Store as PullStateStore } from 'pullstate';
 
-import { lists, homeItems, notifications } from "../mock";
+import { lists, homeItems, notifications, settings, TodoListItem, HomeItem, NotificationItem, Settings } from '../mock';
 
-const initialState: IStore = {
-  currentIndex: 0,
+type StoreProps = {
+  safeAreaTop: number;
+  safeAreaBottom: number;
+  menuOpen: boolean;
+  notificationsOpen: boolean;
+  currentPage: number | null;
+  homeItems: HomeItem[];
+  lists: TodoListItem[];
+  notifications: NotificationItem[];
+  settings: Settings;
+  selectedList: TodoListItem | undefined;
+}
+
+const Store = new PullStateStore<StoreProps>({
   safeAreaTop: 0,
   safeAreaBottom: 0,
   menuOpen: false,
@@ -13,13 +24,8 @@ const initialState: IStore = {
   homeItems,
   lists,
   notifications,
-  settings: {
-    enableNotifications: true,
-  },
-};
-
-
-
-const Store = new PullStateStore(initialState);
+  settings,
+  selectedList: undefined,
+});
 
 export default Store;

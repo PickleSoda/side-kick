@@ -1,6 +1,6 @@
+import { TodoListItem } from '../../mock';
 import Store from '../../store';
 import * as selectors from '../../store/selectors';
-
 import {
   IonPage,
   IonHeader,
@@ -12,18 +12,20 @@ import {
   IonList,
 } from '@ionic/react';
 
-const ListEntry = ({ list, ...props }) => (
-  <IonItem routerLink={`/tabs/lists/${list.id}`} className="list-entry">
-    <IonLabel>{list.name}</IonLabel>
-  </IonItem>
-);
+const ListEntry = ({ list }: { list: TodoListItem }) => {
+  return (
+    <IonItem routerLink={`/lists/${list.id}`} className="list-entry">
+      <IonLabel>{list.name}</IonLabel>
+    </IonItem>
+  );
+};
 
-const AllLists = ({ onSelect }) => {
+const AllLists = () => {
   const lists = Store.useState(selectors.getLists);
 
   return (
     <>
-      {lists.map((list, i) => (
+      {lists.map((list:TodoListItem, i:number) => (
         <ListEntry list={list} key={i} />
       ))}
     </>

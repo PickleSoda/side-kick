@@ -19,34 +19,27 @@ import { useHistory } from "react-router-dom";
 
 import { characters } from "../../../mock/index";
 
-const CharacterSelect = () => {
+const ChooseCharacter = () => {
   console.log(characters);
   const router = useIonRouter()
   const handleNext = () => {
     setAvatar(characters[currentIndex]);
-    router.routeInfo.routeDirection = 'forward'
-    router.push('/alarm', 'forward', 'replace')
+    
   };
 
   const history = useHistory();
 
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const handleSwiperChange = (index) => {
+  const handleSwiperChange = (index:number) => {
     setCurrentIndex(index);
   };
 
   return (
     <IonPage>
       <IonContent className="char-bg content-div">
-        <div className="flex p-2">
-          <IonButton fill="clear" onClick={() => history.push("/")}>
-            <IonIcon
-              slot="icon-only"
-              icon={chevronBackOutline}
-              className="text-white"
-            ></IonIcon>
-          </IonButton>
+        <div className="flex p-2 h-20">
+
           <h3 className="text-white font-bold text-base absolute left-1/2 -translate-x-1/2">Choose a character</h3>
         </div>
 
@@ -85,4 +78,4 @@ const CharacterSelect = () => {
   );
 };
 
-export default CharacterSelect;
+export default ChooseCharacter;

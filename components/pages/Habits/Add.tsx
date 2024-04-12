@@ -16,26 +16,31 @@ import {
 } from '@ionic/react';
 import { chevronBackOutline } from 'ionicons/icons';
 
-const AddUserHabit = ({ open, onDidDismiss }) => {
- const [name, setName] = useState('');
- const [description, setDescription] = useState('');
- const [days, setDays] = useState(0);
+type AddUserHabitProps = {
+  open: boolean;
+  onDidDismiss: () => void;
+};
 
- const handleDecrement = () => {
+const AddHabit: React.FC<AddUserHabitProps> = ({ open, onDidDismiss }) => {
+  const [name, setName] = useState<string | null>('');
+  const [description, setDescription] = useState<string | null>('');
+  const [days, setDays] = useState<number>(0);
+
+  const handleDecrement = () => {
     setDays(days - 1);
- };
+  };
 
- const handleIncrement = () => {
+  const handleIncrement = () => {
     setDays(days + 1);
- };
+  };
 
- const handleSubmit = () => {
+  const handleSubmit = () => {
     // Handle form submission
     console.log({ name, description, days });
     onDidDismiss(); // Close the modal
- };
+  };
 
- return (
+  return (
     <IonModal isOpen={open} onDidDismiss={onDidDismiss}>
       <IonHeader className='intro-bg'>
         <IonToolbar>
@@ -49,11 +54,11 @@ const AddUserHabit = ({ open, onDidDismiss }) => {
         <IonList>
           <IonItem>
             <IonLabel position="floating">Name</IonLabel>
-            <IonInput value={name} onIonChange={e => setName(e.detail.value)} />
+            <IonInput value={name} onIonChange={e => setName(e.detail.value||'')} />
           </IonItem>
           <IonItem>
             <IonLabel position="floating">Description</IonLabel>
-            <IonTextarea value={description} onIonChange={e => setDescription(e.detail.value)} />
+            <IonTextarea value={description} onIonChange={e => setDescription(e.detail.value||'')} />
           </IonItem>
           <IonItem>
             <IonLabel>Days</IonLabel>
@@ -65,7 +70,7 @@ const AddUserHabit = ({ open, onDidDismiss }) => {
         <IonButton expand="full" onClick={handleSubmit}>Submit</IonButton>
       </IonContent>
     </IonModal>
- );
+  );
 };
 
-export default AddUserHabit;
+export default AddHabit;

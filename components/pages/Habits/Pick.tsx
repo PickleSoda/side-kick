@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import {
+  IonPage,
   IonHeader,
   IonToolbar,
   IonTitle,
@@ -13,12 +14,12 @@ import {
 import { chevronBackOutline } from "ionicons/icons";
 import { useHistory } from "react-router";
 import { habits } from "../../../mock";
-import AddUserHabit from "./AddUserHabit";
+import AddHabit from "./Add";
 import { userStore, addHabit, removeHabit } from "../../../store/userStore";
 import { useStoreState } from "pullstate";
-import { IHabit } from "../../../Types";
+import { IHabit } from "../../../types";
 
-const PickHabitComponent = () => {
+const PickHabit = () => {
   const [showHabitModal, setShowHabitModal] = useState(false);
   const history = useHistory();
   const selectedCharacter = useStoreState(userStore, (s) => s.avatar);
@@ -60,16 +61,10 @@ const PickHabitComponent = () => {
   };
 
   return (
+    <IonPage>
+
     <IonContent className="ion-padding intro-bg" fullscreen>
       <IonToolbar className="transparent-bg">
-        <IonButton
-          slot="start"
-          fill="clear"
-          color="dark"
-          onClick={() => history.push("/")}
-        >
-          <IonIcon icon={chevronBackOutline} />
-        </IonButton>
         <IonTitle>Pick a Habit</IonTitle>
       </IonToolbar>
 
@@ -103,27 +98,28 @@ const PickHabitComponent = () => {
         src={selectedCharacter.img.src}
         className="absolute z-10 char-img right-2 !bottom-40 w-48"
       />
-      <div className="text-div content-div">
+      <div className="text-div content-div pb-14">
         <h1>
           Pick a <span className="colored-text">habit</span>
           <br />
           or define new
         </h1>
         <p>Lorem Ipsum Dolor Sit Amet, Ipsum Dolor Sit Ame</p>
-        <IonButton
+        {/* <IonButton
           expand="block"
           onClick={handleNext}
           className="white-background font-bold"
         >
           <p className="text-lg">NEXT</p>
-        </IonButton>
+        </IonButton> */}
       </div>
-      <AddUserHabit
+      <AddHabit
         open={showHabitModal}
         onDidDismiss={() => setShowHabitModal(false)}
       />
     </IonContent>
+    </IonPage>
   );
 };
 
-export default PickHabitComponent;
+export default PickHabit;
