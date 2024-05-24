@@ -27,11 +27,9 @@ const Home = () => {
 
   return (
     <IonPage>
-      <IonHeader>
-        <IonToolbar>
-        <ToolBar />
-        </IonToolbar>
-      </IonHeader>
+      <IonToolbar className="transparent-bg">
+      <ToolBar />
+      </IonToolbar>
       <IonContent className="ion-padding" fullscreen>
         <IonHeader collapse="condense">
           <div className='h-[75vh] flex flex-col justify-between items-center'>
