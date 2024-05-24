@@ -413,3 +413,11 @@ ion-card-content {
   border-radius: 60px;
   z-index:10;
 }
+
+.toolbar {
+  background-color: #613EEA;
+  border-radius: 10px;
+  padding: 0 10px;
+  width: 100%;
+  margin-top: 20px;
+}
