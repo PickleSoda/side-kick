@@ -93,7 +93,7 @@ const PickHabit = () => {
         </IonRow>
       </IonGrid>
       <div className="w-full border-t border-white"></div>
-
+      <h2 className="text-center">+ User Journeys</h2>
       <IonImg
         src={selectedCharacter.img.src}
         className="absolute z-10 char-img right-2 !bottom-40 w-48"
@@ -105,13 +105,13 @@ const PickHabit = () => {
           or define new
         </h1>
         <p>Lorem Ipsum Dolor Sit Amet, Ipsum Dolor Sit Ame</p>
-        {/* <IonButton
-          expand="block"
+        <IonButton
+          shape="round"
           onClick={handleNext}
           className="white-background font-bold"
         >
           <p className="text-lg">NEXT</p>
-        </IonButton> */}
+        </IonButton>
       </div>
       <AddHabit
         open={showHabitModal}
