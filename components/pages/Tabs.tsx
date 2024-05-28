@@ -17,6 +17,11 @@ import PickHabit from './Habits/Pick';
 
 import Chats from './Chats';
 import decoration from '../../public/ui/navbar.svg';
+import SingIn from './Auth/Signin';
+import Signup from './Auth/Signup';
+import ChooseCharacter from './Intro/ChooseCharacter';
+import Alarm from './Intro/Alarm';
+import Landing from './Intro/Landing';
 const Tabs = () => {
   return (
     <IonTabs>
@@ -30,10 +35,15 @@ const Tabs = () => {
         />
         <Route path="/chats" render={() => <Chats />} exact={true} />
         <Route path="/settings" render={() => <Settings />} exact={true} />
+        <Route path="/signin" render={() => <SingIn />} exact={true} />
+        <Route path="/signup" render={() => <Signup />} exact={true} />
+        <Route path="/intro/choosecharacter" render={() => <ChooseCharacter />} exact={true} />
+        <Route path="/intro/alarm" render={() => <Alarm />} exact={true} />
+        <Route path="/intro/landing" render={() => <Landing />} exact={true} />
         <Route path="" render={() => <Redirect to="/home" />} exact={true} />
       </IonRouterOutlet>
 
-      <IonTabBar slot="bottom" color={'secondary'} className='h-20 mt-4'>
+      <IonTabBar slot="bottom" color={'secondary'} className='h-20'>
         <IonTabButton tab="tab1" href="/home">
           <IonIcon icon={homeOutline} />
           <IonLabel>Home</IonLabel>
@@ -54,6 +64,22 @@ const Tabs = () => {
         <IonTabButton tab="tab4" href="/settings">
           <IonIcon icon={personOutline} />
           <IonLabel>Settings</IonLabel>
+        </IonTabButton>
+        <IonTabButton tab="tab5" href="/signin">
+          <IonIcon icon={personOutline} />
+          <IonLabel>signin</IonLabel>
+        </IonTabButton>
+        <IonTabButton tab="tab6" href="/intro/choosecharacter">
+          <IonIcon icon={personOutline} />
+          <IonLabel>choose</IonLabel>
+        </IonTabButton>
+        <IonTabButton tab="tab7" href="/intro/alarm">
+          <IonIcon icon={personOutline} />
+          <IonLabel>alarm</IonLabel>
+        </IonTabButton>
+        <IonTabButton tab="tab8" href="/intro/landing">
+          <IonIcon icon={personOutline} />
+          <IonLabel>landing</IonLabel>
         </IonTabButton>
       </IonTabBar>
     </IonTabs>

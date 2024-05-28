@@ -70,3 +70,9 @@ export interface IImg {
     src: string;
     width: number;
 }
+
+export interface IFormData {
+  username: string;
+  email: string;
+  password: string;
+}
