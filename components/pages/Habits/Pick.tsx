@@ -11,7 +11,7 @@ import {
   IonRow,
   IonImg,
 } from "@ionic/react";
-import { chevronBackOutline } from "ionicons/icons";
+import { chevronBackOutline, logoGoogle } from "ionicons/icons";
 import { useHistory } from "react-router";
 import { habits } from "../../../mock";
 import AddHabit from "./Add";
@@ -105,13 +105,15 @@ const PickHabit = () => {
           or define new
         </h1>
         <p>Lorem Ipsum Dolor Sit Amet, Ipsum Dolor Sit Ame</p>
-        <IonButton
-          shape="round"
-          onClick={handleNext}
-          className="white-background font-bold"
-        >
-          <p className="text-lg">NEXT</p>
-        </IonButton>
+        <div className="flex justify-center mt-4">
+          <IonButton
+            shape="round"
+            onClick={handleNext}
+            className="white-background font-bold px-12"
+          >
+            <p className="text-lg mx-12">NEXT</p>
+          </IonButton>
+        </div>
       </div>
       <AddHabit
         open={showHabitModal}

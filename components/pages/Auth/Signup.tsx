@@ -12,9 +12,11 @@ import {
   IonInput,
 } from "@ionic/react";
 import { useHistory } from "react-router-dom";
-import { chevronBackOutline } from "ionicons/icons";
+import { chevronBackOutline, eyeOffOutline, eyeOutline, logoFacebook, logoGoogle, logoTwitter } from "ionicons/icons";
 import { useStoreState } from "pullstate";
 import { userStore, setAlarmState } from "../../../store/userStore";
+
+import BackgroundImg from "../../../public/img/main-bg.png";
 
 const Signup = () => {
   // Add your component's state and other initializations here
@@ -25,20 +27,26 @@ const Signup = () => {
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
     const isAuthorized = useStoreState(userStore, (state) => state.isAuth);
+
+    const [showPassword, setShowPassword] = useState(false);
+
+    const togglePasswordVisibility = () => {
+      setShowPassword(!showPassword);
+    };
   return (
     <IonPage>
-      <IonContent className="char-bg content-div">
-        <div className="flex justify-end p-2">
-
-          <IonButton fill="clear" onClick={() => history.push("/signin")}>
-            <p className="text-white font-bold">Sign In</p>
+      <IonContent className="sign-up-bg content-div">
+      <IonImg className="into-img" src={BackgroundImg.src} />
+          <IonButton className="flex justify-between p-2 " fill="clear" onClick={() => history.push("/signin")}>
+            <div className="flex justify-between w-full items-center">
+              <IonIcon icon={chevronBackOutline} className="w-6 h-6"/>
+              <p className="text-white font-bold">Sign In</p>
+            </div>
           </IonButton>
-        </div>
         <IonGrid>
           <IonRow>
             <IonCol>
-              <h1>Sign up</h1>
-              {/* Add more JSX elements as needed */}
+              <h1 className="text-center text-black text-3xl">Sign up</h1>
             </IonCol>
           </IonRow>
           <IonRow>
@@ -48,7 +56,8 @@ const Signup = () => {
                   history.push("/character-select");
                 }}
               >
-                G with google
+                <span><IonIcon icon={logoGoogle} className="w-6"/></span>
+                 with google
               </IonButton>
             </IonCol>
             <IonCol>
@@ -57,7 +66,7 @@ const Signup = () => {
                   history.push("/signin");
                 }}
               >
-                F
+                <IonIcon icon={logoFacebook} className="w-6"/>
               </IonButton>
             </IonCol>
             <IonCol>
@@ -66,51 +75,71 @@ const Signup = () => {
                   history.push("/signin");
                 }}
               >
-                T
+                <IonIcon icon={logoTwitter} className="w-6 bg-transparent"/>
               </IonButton>
             </IonCol>
           </IonRow>
           <IonRow>
-            <IonCol>Or with Email</IonCol>
+            <IonCol className="text-base text-center text-zinc-400">Or with Email</IonCol>
           </IonRow>
-          <IonRow>
+          <IonRow className="p-0">
             <IonCol>
-              <IonItem>
                 <IonInput
+                  className="sign-input-fields"
                   label="Email"
                   labelPlacement="floating"
                   placeholder="Enter email"
                 ></IonInput>
-              </IonItem>
             </IonCol>
           </IonRow>
           <IonRow>
             <IonCol>
-              <IonItem>
+              <div className="relative">
                 <IonInput
                   label="Password"
                   labelPlacement="floating"
-                  type="password"
-                  placeholder="Choose password"
+                  type={showPassword ? 'text' : 'password'}
+                  placeholder="Enter password"
+                  className="sign-input-fields"
+                  value={password}
+                  onIonChange={(e) => setPassword(e.detail.value!)}
                 ></IonInput>
-              </IonItem>
+                <IonButton 
+                  fill="clear" 
+                  className="absolute right-2 top-1/2 transform -translate-y-1/2 z-10"
+                  onClick={togglePasswordVisibility}
+                >
+                  <IonIcon icon={showPassword ? eyeOffOutline : eyeOutline} />
+                </IonButton>
+              </div>
             </IonCol>
           </IonRow>
           <IonRow>
             <IonCol>
-              <IonItem>
+              <div className="relative">
                 <IonInput
-                  label="Password"
+                  label="Repeat Password"
                   labelPlacement="floating"
-                  type="password"
-                  placeholder="Repeat password"
+                  type={showPassword ? 'text' : 'password'}
+                  placeholder="Enter password"
+                  className="sign-input-fields"
+                  value={password}
+                  onIonChange={(e) => setPassword(e.detail.value!)}
                 ></IonInput>
-              </IonItem>
+                <IonButton 
+                  fill="clear" 
+                  className="absolute right-2 top-1/2 transform -translate-y-1/2 z-10"
+                  onClick={togglePasswordVisibility}
+                >
+                  <IonIcon icon={showPassword ? eyeOffOutline : eyeOutline} />
+                </IonButton>
+              </div>
             </IonCol>
           </IonRow>
           <IonRow>
             <IonCol>
               <IonButton
+              className="text-center bg-black"
               expand="block"
                 onClick={() => {
                   history.push("/signin");

@@ -2,6 +2,7 @@ import { IonIcon } from "@ionic/react"
 import { heartCircle, menuOutline, navigate } from "ionicons/icons"
 
 const ToolBar = () => {
+
     return (
         <div className="flex justify-between toolbar items-center">
             <div className="flex gap-1">
