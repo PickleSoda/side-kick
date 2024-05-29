@@ -12,7 +12,7 @@ import {
   IonInput,
 } from "@ionic/react";
 import { useHistory } from "react-router-dom";
-import { chevronBackOutline, logoFacebook, logoGoogle, logoTwitter } from "ionicons/icons";
+import { chevronBackOutline, eyeOffOutline, eyeOutline, logoFacebook, logoGoogle, logoTwitter } from "ionicons/icons";
 import { useStoreState } from "pullstate";
 import { userStore, setAlarmState } from "../../../store/userStore";
 
@@ -27,6 +27,12 @@ const Signup = () => {
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
     const isAuthorized = useStoreState(userStore, (state) => state.isAuth);
+
+    const [showPassword, setShowPassword] = useState(false);
+
+    const togglePasswordVisibility = () => {
+      setShowPassword(!showPassword);
+    };
   return (
     <IonPage>
       <IonContent className="sign-up-bg content-div">
@@ -88,30 +94,52 @@ const Signup = () => {
           </IonRow>
           <IonRow>
             <IonCol>
+              <div className="relative">
                 <IonInput
                   label="Password"
                   labelPlacement="floating"
-                  type="password"
-                  placeholder="Choose password"
+                  type={showPassword ? 'text' : 'password'}
+                  placeholder="Enter password"
                   className="sign-input-fields"
+                  value={password}
+                  onIonChange={(e) => setPassword(e.detail.value!)}
                 ></IonInput>
+                <IonButton 
+                  fill="clear" 
+                  className="absolute right-2 top-1/2 transform -translate-y-1/2 z-10"
+                  onClick={togglePasswordVisibility}
+                >
+                  <IonIcon icon={showPassword ? eyeOffOutline : eyeOutline} />
+                </IonButton>
+              </div>
             </IonCol>
           </IonRow>
           <IonRow>
             <IonCol>
+              <div className="relative">
                 <IonInput
-                  label="Password"
+                  label="Repeat Password"
                   labelPlacement="floating"
-                  type="password"
-                  placeholder="Repeat password"
+                  type={showPassword ? 'text' : 'password'}
+                  placeholder="Enter password"
                   className="sign-input-fields"
+                  value={password}
+                  onIonChange={(e) => setPassword(e.detail.value!)}
                 ></IonInput>
+                <IonButton 
+                  fill="clear" 
+                  className="absolute right-2 top-1/2 transform -translate-y-1/2 z-10"
+                  onClick={togglePasswordVisibility}
+                >
+                  <IonIcon icon={showPassword ? eyeOffOutline : eyeOutline} />
+                </IonButton>
+              </div>
             </IonCol>
           </IonRow>
           <IonRow>
             <IonCol>
               <IonButton
-              className="text-center"
+              className="text-center bg-black"
               expand="block"
                 onClick={() => {
                   history.push("/signin");
