@@ -404,6 +404,29 @@ ion-card-content {
   pointer-events: none;
 }
 
+.intensity-gradient-top {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 150px;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(0deg, transparent 30%, #6D70E9 60%,#6A68E7 100%);
+}
+.intensity-gradient-bottom {
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 150px;
+  z-index: 1;
+  background: linear-gradient(180deg, transparent 30%, #6D70E9 60%,#6A68E7 100%);
+  pointer-events: none;
+}
+
 .circle::before {
   display: block;
   content: "";

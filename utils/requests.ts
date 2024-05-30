@@ -41,13 +41,13 @@ export const initializeUserState = async () => {
 export const initializeCommitment = async (data: {
   habit_id: string;
   intensity: string;
-  duration: string;
+  duration: number;
   alarm_time: string;
 }) => {
   const { habit_id, intensity, duration, alarm_time } = data;
   return request({
-    url: "/user/commitment/initialize",
-    method: "GET",
+    url: "/user/commitments/initialize",
+    method: "POST",
     data: {
       habit_id,
       intensity,
