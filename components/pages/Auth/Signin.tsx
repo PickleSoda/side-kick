@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   IonPage,
   IonContent,
@@ -10,39 +10,96 @@ import {
   IonRow,
   IonItem,
   IonInput,
+  IonLabel,
 } from "@ionic/react";
-import { useHistory } from "react-router-dom";
-import { chevronBackOutline } from "ionicons/icons";
-import { useStoreState } from "pullstate";
-import { userStore, setAlarmState } from "../../../store/userStore";
+import { useIonRouter } from "@ionic/react";
+import { request } from "../../../lib/axios";
+import { loginUser } from "../../../store/userStore";
+import { useIonLoading } from '@ionic/react';
+import { Keyboard } from '@capacitor/keyboard';
+import { loginRequest } from "../../../utils/requests";
+
 
 const SingIn = () => {
   // Add your component's state and other initializations here
-  const history = useHistory();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [error, setError] = useState("");
+  const [formData, setFormData] = useState({ username: '', password: '' });
+  const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
-  const isAuthorized = useStoreState(userStore, (state) => state.isAuth);
-  const handleSignIn = () => {
-    // Add your sign in logic here
-    // You can use the state variables to access the user's email and password
-    // You can use the setError function to display an error message to the user
-    // You can use the setLoading function to show a loading indicator while the user is being signed in
-    // You can use the history object to navigate to another page after the user has been signed in
+  const [present, dismiss] = useIonLoading();
+  const [keyboardVisible, setKeyboardVisible] = useState(false);
+  const router = useIonRouter();
 
-    userStore.update((s) => {
-      s.isAuth = true;
-    });
-    console.log("User signed in");
-    history.push("/habits/pick");
+  const handleInputChange = (e: any) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
   };
+
+  const validateForm = () => {
+    const { username, password } = formData;
+    if (!username || !password) {
+      setError('All fields are required.');
+      console.log('Validation failed: All fields are required.');
+      return false;
+    }
+    if (password.length < 8) {
+      setError('Password must be at least 8 characters.');
+      console.log('Validation failed: Password must be at least 8 characters.');
+      return false;
+    }
+    setError('');
+    return true;
+  };
+
+  const handleSignIn = async (e: any) => {
+    if (!validateForm()) return;
+    e.preventDefault();
+    setLoading(true);
+    try {
+      const { username, password } = formData;
+      present({
+        message: 'Signing in...',
+        duration: 3000,
+      });
+      const response = await loginRequest(username, password);
+      console.log(response);
+      loginUser({ username, token: response.data.token });
+      router.push('/', 'none', 'push');
+    } catch (err: any) {
+      setError('Username or password is incorrect');
+    } finally {
+      dismiss();
+      setLoading(false);
+    }
+  };
+  const handleSignUp = () => {
+    router.push('/signup', 'none', 'push');
+  };
+  // const handleSignIn = () => {
+
+  //   userStore.update((s) => {
+  //     s.isAuth = true;
+  //   });
+  //   console.log("User signed in");
+  //   history.push("/habits/pick");
+  // };
+
+  useEffect(() => {
+    const showHandler = () => setKeyboardVisible(true);
+    const hideHandler = () => setKeyboardVisible(false);
+
+    Keyboard.addListener('keyboardWillShow', showHandler);
+    Keyboard.addListener('keyboardWillHide', hideHandler);
+
+
+    return () => {
+      Keyboard.removeAllListeners();
+    };
+  }, []);
   return (
     <IonPage>
       <IonContent className="char-bg content-div">
         <div className="flex justify-end p-2">
-          <IonButton fill="clear" onClick={() => history.push("/signup")}>
+          <IonButton fill="clear" onClick={() => router.push("/signup")}>
             <p className="text-white font-bold">Sign up</p>
           </IonButton>
         </div>
@@ -57,7 +114,7 @@ const SingIn = () => {
             <IonCol>
               <IonButton
                 onClick={() => {
-                  history.push("/character-select");
+                  router.push("/character-select");
                 }}
               >
                 G with google
@@ -66,7 +123,7 @@ const SingIn = () => {
             <IonCol>
               <IonButton
                 onClick={() => {
-                  history.push("/signin");
+                  router.push("/signin");
                 }}
               >
                 F
@@ -75,7 +132,7 @@ const SingIn = () => {
             <IonCol>
               <IonButton
                 onClick={() => {
-                  history.push("/signin");
+                  router.push("/signin");
                 }}
               >
                 T
@@ -87,31 +144,43 @@ const SingIn = () => {
           </IonRow>
           <IonRow>
             <IonCol>
-              <IonItem>
+              <IonLabel className="input-label">Username</IonLabel>
+              <IonItem lines="none" className="input-item">
                 <IonInput
-                  label="Email"
-                  labelPlacement="floating"
-                  placeholder="Enter email"
+                  value={formData.username}
+                  onInput={(e: any) => handleInputChange(e)}
+                  type="text"
+                  name="username"
+                  mode="md"
+                  required
                 ></IonInput>
               </IonItem>
             </IonCol>
           </IonRow>
           <IonRow>
             <IonCol>
-              <IonItem>
+              <IonLabel className="input-label">Password</IonLabel>
+              <IonItem lines="none" className="input-item">
                 <IonInput
-                  label="Password"
-                  labelPlacement="floating"
+                  value={formData.password}
+                  onInput={(e: any) => handleInputChange(e)}
                   type="password"
-                  placeholder="Choose password"
+                  required
+                  name="password"
+                  mode="md"
                 ></IonInput>
               </IonItem>
             </IonCol>
           </IonRow>
           <IonRow>
             <IonCol>
-              <IonButton expand="block" onClick={handleSignIn}>
-                Sign In
+              <IonButton
+                expand="block"
+                className="signin-button"
+                onClick={handleSignIn}
+                disabled={loading}
+              >
+                Log In
               </IonButton>
             </IonCol>
           </IonRow>

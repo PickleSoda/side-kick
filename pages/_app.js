@@ -31,8 +31,11 @@ import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import "swiper/css/parallax";
 import '@ionic/react/css/ionic-swiper.css';
-
+import { initializeAppState } from '../store';
 initializeUserState();
+
+initializeAppState();
+
 
 function MyApp({ Component, pageProps }) {
   return (

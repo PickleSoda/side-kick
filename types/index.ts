@@ -1,15 +1,18 @@
 
 export interface IHabit {
+  id?: string;
   name: string;
   description: string;
   duration: number; // Assuming duration is in days
   selectDate: Date;
   chosen: boolean;
+  available_durations?: number[];
 }
 export interface IUser {
   isAuth: boolean;
   username: string;
   email: string;
+  token: string;
   avatar: ICharacter;
   alarm: IAlarm;
   habits: IHabit[]; // Add an array of Habit objects

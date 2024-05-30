@@ -146,6 +146,8 @@ export const habits: IHabit[] = [
     duration: 30, // Assuming duration is in days
     selectDate: new Date(),
     chosen: false,
+    available_durations: [7, 14, 30]
+
   },
   {
     name: "Read",
@@ -153,6 +155,7 @@ export const habits: IHabit[] = [
     duration: 7, // Assuming duration is in days
     selectDate: new Date(),
     chosen: false,
+    available_durations: [7, 14, 30]
   },
   {
     name: "Meditate",
@@ -160,6 +163,7 @@ export const habits: IHabit[] = [
     duration: 14, // Assuming duration is in days
     selectDate: new Date(),
     chosen: false,
+    available_durations: [7, 14, 30]
   },
   {
     name: "Drink Water",
@@ -167,5 +171,6 @@ export const habits: IHabit[] = [
     duration: 1, // Assuming duration is in days
     selectDate: new Date(),
     chosen: false,
+    available_durations: [7, 14, 30]
   },
 ];

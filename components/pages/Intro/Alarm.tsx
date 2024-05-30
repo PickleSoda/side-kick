@@ -13,7 +13,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { useHistory } from "react-router-dom";
 import { chevronBackOutline } from "ionicons/icons";
 import { useStoreState } from "pullstate";
-import { userStore, setAlarmState } from "../../../store/userStore";
+import { userStore, setUserState } from "../../../store/userStore";
 import { IAlarm } from "../../../types";
 import { useIonRouter } from "@ionic/react";
 
@@ -57,7 +57,7 @@ const Alarm = () => {
   const router = useIonRouter()
 
   const handleNext = () => {
-    setAlarmState(alarm);
+    setUserState(alarm);
     router.push('/signup', 'forward', 'replace')
 
   };

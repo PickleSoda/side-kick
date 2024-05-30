@@ -14,7 +14,7 @@ import {
 import { useHistory } from "react-router-dom";
 import { chevronBackOutline, eyeOffOutline, eyeOutline, logoFacebook, logoGoogle, logoTwitter } from "ionicons/icons";
 import { useStoreState } from "pullstate";
-import { userStore, setAlarmState } from "../../../store/userStore";
+import { userStore } from "../../../store/userStore";
 
 import BackgroundImg from "../../../public/img/main-bg.png";
 
