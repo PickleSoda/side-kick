@@ -59,7 +59,7 @@ body {
   --background: white; /* This sets the background color to white */
   --color:var(--ion-background-color); /* This sets the text color to black */ /* This sets the border color to black */
  }
- .white-background-opacity{
+.white-background-opacity{
   --background: rgba(255, 255, 255, 0.7); /* This sets the background color to white */
   --color:var(--ion-background-color); /* This sets the text color to black */ /* This sets the border color to black */
  }
@@ -254,6 +254,31 @@ swiper-container {
   font-family: 'poppins-bold', sans-serif;
   font-size: 36px;
   z-index: 3;
+}
+
+.bg-white {
+  object-fit: cover;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 0;
+}
+
+.sign-up-bg {
+  --ion-background-color: var(--ion-color-primary-contrast);
+}
+
+.bg-primary {
+  --background: var(--ion-color-tertiary-shade);
+}
+
+.bg-color-primary {
+  --ion-text-color: var(--ion-color-tertiary-shade);
+}
+
+.bg-transparent {
+  --background: var(--ion-color-primary-contrast);
+  --color: black;
 }
 
 .colored-text {

@@ -16,7 +16,7 @@ import { chevronBackOutline, eyeOffOutline, eyeOutline, logoFacebook, logoGoogle
 import { useStoreState } from "pullstate";
 import { userStore } from "../../../store/userStore";
 
-import BackgroundImg from "../../../public/img/main-bg.png";
+import BackgroundImg from "../../../out/img/bg-white.png";  
 
 const Signup = () => {
   // Add your component's state and other initializations here
@@ -36,11 +36,11 @@ const Signup = () => {
   return (
     <IonPage>
       <IonContent className="sign-up-bg content-div">
-      <IonImg className="into-img" src={BackgroundImg.src} />
-          <IonButton className="flex justify-between p-2 " fill="clear" onClick={() => history.push("/signin")}>
+      <IonImg className="bg-white" src={BackgroundImg.src} />
+          <IonButton className="flex justify-between p-2" fill="clear" onClick={() => history.push("/signin")}>
             <div className="flex justify-between w-full items-center">
-              <IonIcon icon={chevronBackOutline} className="w-6 h-6"/>
-              <p className="text-white font-bold">Sign In</p>
+              <IonIcon icon={chevronBackOutline} className="w-6 h-6 bg-primary "/>
+              <p className="font-bold bg-color-primary ">Sign In</p>
             </div>
           </IonButton>
         <IonGrid>
@@ -62,6 +62,7 @@ const Signup = () => {
             </IonCol>
             <IonCol>
               <IonButton
+                className="bg-transparent"
                 onClick={() => {
                   history.push("/signin");
                 }}
@@ -71,11 +72,12 @@ const Signup = () => {
             </IonCol>
             <IonCol>
               <IonButton
+                className="bg-transparent"
                 onClick={() => {
                   history.push("/signin");
                 }}
               >
-                <IonIcon icon={logoTwitter} className="w-6 bg-transparent"/>
+                <IonIcon icon={logoTwitter} className="w-6"/>
               </IonButton>
             </IonCol>
           </IonRow>
@@ -139,7 +141,7 @@ const Signup = () => {
           <IonRow>
             <IonCol>
               <IonButton
-              className="text-center bg-black"
+              className="text-center bg-primary"
               expand="block"
                 onClick={() => {
                   history.push("/signin");
