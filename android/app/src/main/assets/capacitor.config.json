@@ -1,5 +1,5 @@
 {
-	"appId": "com.example.app",
+	"appId": "com.sidekick.app",
 	"appName": "side-kick",
 	"bundledWebRuntime": false,
 	"npmClient": "npm",

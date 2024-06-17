@@ -15,7 +15,7 @@
     "serve": "npx serve out",
     "presync": "npm run build",
     "sync": "npx cap sync",
-    "android": "npx cap run android",
+    "android": "npx cap run android --scan",
     "ios": "npx cap run ios"
   },
   "dependencies": {

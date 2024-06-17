@@ -28,6 +28,7 @@ const AppShell = () => {
       await initializeUserState();
       await initializeAppState();
       setInitialized(true);
+      console.log('initialized');
     };
 
     init();

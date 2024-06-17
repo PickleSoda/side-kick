@@ -11,7 +11,6 @@ import {
   IonMenuButton,
   IonImg,
 } from '@ionic/react';
-import Notifications from './Notifications';
 import { useState } from 'react';
 import { arrowForward, chatbubble, chatbubbleEllipses, notificationsOutline, removeCircle } from 'ionicons/icons';
 import ToolBar from '../ui/ToolBar';
@@ -22,7 +21,6 @@ import { useStoreState } from 'pullstate';
 
 
 const Home = () => {
-  const [showNotifications, setShowNotifications] = useState(false);
   const selectedCharacter = useStoreState(userStore, (s) => s.avatar);
 
   return (

@@ -1,8 +1,18 @@
-import { Store as PullStateStore } from 'pullstate';
+import { Store as PullStateStore } from "pullstate";
 import { Preferences } from "@capacitor/preferences";
-import { getHabits } from '../utils/requests';
-import { lists, homeItems, notifications, settings, TodoListItem, HomeItem, NotificationItem, Settings, habits } from '../mock';
-import { IHabit } from '../types';
+import { getHabits } from "../utils/requests";
+import {
+  lists,
+  homeItems,
+  notifications,
+  settings,
+  TodoListItem,
+  HomeItem,
+  NotificationItem,
+  Settings,
+  habits,
+} from "../mock";
+import { IHabit } from "../types";
 
 type StoreProps = {
   safeAreaTop: number;
@@ -15,7 +25,7 @@ type StoreProps = {
   settings: Settings;
   selectedList: TodoListItem | undefined;
   habits: IHabit[];
-}
+};
 
 const Store = new PullStateStore<StoreProps>({
   safeAreaTop: 0,
@@ -32,7 +42,6 @@ const Store = new PullStateStore<StoreProps>({
 
 export default Store;
 
-
 export async function initializeAppState() {
   console.log("Initializing app state");
   const savedState = await Preferences.get({ key: "appState" });
@@ -47,11 +56,15 @@ export async function initializeAppState() {
       console.error("Saved state is not valid");
     }
   }
-  const habits = await getHabits();
-  console.log('server habits',habits);
-  Store.update((state) => {
-    state.habits = habits.data;
-  });
+  try {
+    const habits = await getHabits();
+    console.log("server habits", habits);
+    Store.update((state) => {
+      state.habits = habits.data;
+    });
+  } catch (e) {
+    console.log(e);
+  }
 }
 
 function isStoreProps(obj: any): obj is StoreProps {
