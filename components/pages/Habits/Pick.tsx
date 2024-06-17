@@ -11,7 +11,7 @@ import {
   IonRow,
   IonImg,
 } from "@ionic/react";
-import { chevronBackOutline, logoGoogle } from "ionicons/icons";
+import ToolBar from "../../ui/ToolBar";
 import DetailModal from "./DetailModal";
 import { useHistory } from "react-router";
 import AddHabit from "./DetailModal";
@@ -25,7 +25,7 @@ const PickHabit = () => {
   const history = useHistory();
   const habits = useStoreState(Store, (s) => s.habits);
   const selectedCharacter = useStoreState(userStore, (s) => s.avatar);
-  const userHabits = useStoreState(userStore, (s) => s.habits);
+  const userHabits = useStoreState(userStore, (s) => s.commitments);
   const [extendedHabits, setExtendedHabits] = useState<IHabit[]>([]);
   const [selectedHabit, setSelectedHabit] = useState<IHabit | undefined>(undefined);
   useEffect(() => {
@@ -33,14 +33,14 @@ const PickHabit = () => {
     const updateExtendedHabits = () => {
       const updatedHabits = habits.map((habit) => ({
         ...habit,
-        chosen: userHabits.some((userHabit) => userHabit.name === habit.name),
+        chosen: userHabits.some((userHabit) => userHabit.habit_id === habit.id),
       }));
       setExtendedHabits(updatedHabits);
     };
 
     // Subscribe to changes in the userStore
     const unsubscribe = userStore.subscribe(
-      (s) => s.habits,
+      (s) => s.commitments,
       updateExtendedHabits
     );
 
@@ -66,11 +66,12 @@ const PickHabit = () => {
 
   return (
     <IonPage>
-
+      <IonHeader translucent={true} className='shadow-none' mode='md'>
+      <IonToolbar className="transparent-bg ion-padding">
+      <ToolBar />
+      </IonToolbar>
+      </IonHeader>
       <IonContent className="ion-padding intro-bg" fullscreen>
-        <IonToolbar className="transparent-bg">
-          <IonTitle>Pick a Habit</IonTitle>
-        </IonToolbar>
 
         <IonGrid>
           <IonRow>

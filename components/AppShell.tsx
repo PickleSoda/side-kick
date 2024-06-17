@@ -16,6 +16,10 @@ const initUser = async () => {
   const groupChats = await getGroups();
   console.log('server group chats', groupChats);
   console.log('server commitments', commitments);
+  userStore.update((s) => {
+    s.commitments = commitments.data;
+    s.groups = groupChats.data;
+  });
 }
 
 const AppShell = () => {
@@ -33,7 +37,6 @@ const AppShell = () => {
 
     init();
   }, []);
-  console.log(isAuthorized);
   useEffect(() => {
     if (isAuthorized) {
       initUser();

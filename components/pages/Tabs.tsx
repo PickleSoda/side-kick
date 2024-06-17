@@ -10,13 +10,11 @@ import {
 } from '@ionic/react';
 import { personOutline, chatbubbleEllipsesOutline, homeOutline, fingerPrintOutline,checkmarkOutline , gitBranchOutline } from 'ionicons/icons';
 import Home from './Home';
-import Lists from './Lists';
-import ListDetail from './ListDetail';
 import Settings from './Settings';
 import PickHabit from './Habits/Pick';
 
 import Chats from './Chats';
-import decoration from '../../public/ui/navbar.svg';
+import ChatDetails from './Chats/details';
 import SingIn from './Auth/Signin';
 import Signup from './Auth/Signup';
 import ChooseCharacter from './Intro/ChooseCharacter';
@@ -31,7 +29,7 @@ const Tabs = () => {
         <Route path="/habits/pick" render={() => <PickHabit />} exact={true} />
         <Route
           path="/chats/:listId"
-          render={() => <ListDetail />}
+          render={() => <ChatDetails />}
           exact={true}
         />
         <Route path="/chats" render={() => <Chats />} exact={true} />

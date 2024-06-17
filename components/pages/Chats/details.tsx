@@ -1,7 +1,7 @@
 import { useStoreState } from 'pullstate';
-import { TodoListItem } from '../../mock';
-import Store from '../../store';
-import * as selectors from '../../store/selectors';
+import { TodoListItem } from '../../../mock';
+import Store from '../../../store';
+import * as selectors from '../../../store/selectors';
 import {
   IonPage,
   IonHeader,
@@ -13,8 +13,8 @@ import {
   IonList,
   IonImg,
 } from '@ionic/react';
-import { userStore } from '../../store/userStore';
-import ToolBar from '../ui/ToolBar';
+import { userStore } from '../../../store/userStore';
+import ToolBar from '../../ui/ToolBar';
 
 const ListEntry = ({ list }: { list: TodoListItem }) => {
   return (
@@ -36,9 +36,9 @@ const ListEntry = ({ list }: { list: TodoListItem }) => {
 //   );
 // };
 
-import max from "../../public/img/max.jpg";
+import max from "../../../public/img/max.jpg";
 
-const Chats = () => {
+const ChatDetails = () => {
 
   const selectedCharacter = useStoreState(userStore, (s) => s.avatar);
   return (
@@ -55,7 +55,7 @@ const Chats = () => {
           {/* <div className="bg-white w-4/5 mx-auto min-h-80 rounded-md relative">
             <div className="rotate-90 absolute bottom-[-9px] right-[50px] w-0 h-0 border-l-[10px] border-l-transparent border-r-[10px] border-r-transparent border-b-[20px] border-b-white"></div>
         </div> */}
-      <div className="bg-white w-4/5 mx-auto min-h-60 rounded-md relative mt-10 z-10 mb-36">
+      <div className="bg-white w-4/5 mx-auto min-h-60 rounded-md relative mt-10 z-10 mb-36 ml-10">
           <div className="chat-content">
             <div className="border-b-2 flex items-center gap-2">
               <div className='round'>
@@ -87,4 +87,4 @@ const Chats = () => {
   );
 };
 
-export default Chats;
+export default ChatDetails;

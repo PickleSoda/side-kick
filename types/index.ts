@@ -8,6 +8,19 @@ export interface IHabit {
   chosen: boolean;
   available_durations?: number[];
 }
+export interface IGroup {
+}
+
+export interface ICommitment {
+  alarm_time: string;
+  creator_id: string;
+  habit_id: string;
+  id: string;
+  length_in_days: number;
+  start_time: string;
+  status: string;
+}
+
 export interface IUser {
   isAuth: boolean;
   username: string;
@@ -15,7 +28,7 @@ export interface IUser {
   token: string;
   avatar: ICharacter;
   alarm: IAlarm;
-  habits: IHabit[]; // Add an array of Habit objects
+  commitments: ICommitment[]; // Add an array of Habit objects
   groups: any[];
 }
 export interface IStore {
@@ -61,12 +74,6 @@ export interface ICharacter {
   text: any;
   info: string;
 }
-
-export interface IAlarm {
-  hours: number;
-  minutes: number;
-  meridiem: "am" | "pm";
-}
 export interface IImg {
     blurHeight: number;
     blurWidth: number;
@@ -80,3 +87,35 @@ export interface IFormData {
   email: string;
   password: string;
 }
+
+// export interface IGroup {
+//   commitments: Array [ {…}, {…} ]
+//   ​​​​
+//   0: Object { habit_id: 14, id: 3, name: "testuser" }
+//   ​​​​​
+//   habit_id: 14
+//   ​​​​​
+//   id: 3
+//   ​​​​​
+//   name: "testuser"
+//   ​​​​​
+//   <prototype>: Object { … }
+//   ​​​​
+//   1: Object { habit_id: 17, id: 4, name: "testuser2" }
+//   ​​​​
+//   length: 2
+//   ​​​​
+//   <prototype>: Array []
+//   ​​​
+//   end_time: "2024-06-29T03:47:35"
+//   ​​​
+//   id: 10
+//   ​​​
+//   messages: Array []
+//   ​​​
+//   name: "spooky dookie"
+//   ​​​
+//   reminders: Array []
+//   ​​​
+//   start_time: "2024-05-30T03:47:35"
+// }

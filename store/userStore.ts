@@ -1,5 +1,5 @@
 import { Store as PullStateStore } from "pullstate";
-import { IUser, IHabit, IAlarm, ICharacter } from "../types";
+import { IUser, IHabit, IAlarm, ICharacter, ICommitment } from "../types";
 import { characters } from "../mock";
 import { Preferences } from "@capacitor/preferences";
 const initialState: IUser = {
@@ -9,7 +9,7 @@ const initialState: IUser = {
   token: "",
   avatar: characters[0], // Initialize habits as an empty array
   alarm: { hours: 0, minutes: 0, meridiem: "am" },
-  habits: [],
+  commitments: [],
   groups: [],
 };
 
@@ -28,11 +28,11 @@ const setAvatar = (avatar: ICharacter) =>
 
 // New actions for managing habits
 const addHabit = (habit: IHabit) =>
-  userStore.update((state) => ({ ...state, habits: [...state.habits, habit] }));
-const removeHabit = (habitName: string) =>
+  userStore.update((state) => ({ ...state, commitments: [...state.commitments, habit] }));
+const removeHabit = (id: string) =>
   userStore.update((state) => ({
     ...state,
-    habits: state.habits.filter((habit: IHabit) => habit.name !== habitName),
+    commitments: state.commitments.filter((commitment: ICommitment) => commitment.habit_id !== id),
   }));
 const loginUser = ({
   username,

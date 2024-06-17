@@ -20,7 +20,7 @@ import { useStoreState } from 'pullstate';
 
 
 
-const Home = () => {
+const FingerPrint = () => {
   const selectedCharacter = useStoreState(userStore, (s) => s.avatar);
 
   return (
@@ -68,4 +68,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default FingerPrint;
