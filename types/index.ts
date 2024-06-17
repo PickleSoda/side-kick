@@ -16,6 +16,7 @@ export interface IUser {
   avatar: ICharacter;
   alarm: IAlarm;
   habits: IHabit[]; // Add an array of Habit objects
+  groups: any[];
 }
 export interface IStore {
   currentIndex: number;

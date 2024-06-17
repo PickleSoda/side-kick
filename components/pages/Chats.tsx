@@ -43,8 +43,8 @@ const Chats = () => {
   const selectedCharacter = useStoreState(userStore, (s) => s.avatar);
   return (
     <IonPage>
-      <IonHeader translucent={true}>
-      <IonToolbar className="transparent-bg">
+      <IonHeader translucent={true} className='shadow-none' mode='md'>
+      <IonToolbar className="transparent-bg ion-padding">
       <ToolBar />
       </IonToolbar>
       </IonHeader>

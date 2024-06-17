@@ -27,7 +27,7 @@ const Settings = () => {
   const settings = Store.useState(selectors.getSettings);
   return (
     <IonPage>
-      <IonHeader>
+      <IonHeader translucent={true} className='shadow-none' mode='md'>
         <IonToolbar>
           <IonTitle>Settings</IonTitle>
         </IonToolbar>
@@ -48,8 +48,8 @@ const Settings = () => {
             </IonToggle>
           </IonItem>
           <IonItem onClick={() => handleLogout()}>
-              <h5>Logout</h5>
-            </IonItem>
+            <h5>Logout</h5>
+          </IonItem>
         </IonList>
       </IonContent>
     </IonPage>

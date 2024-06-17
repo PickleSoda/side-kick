@@ -53,6 +53,10 @@ const PickHabit = () => {
   }, [userHabits]);
 
   const handleHabitClick = (habit: IHabit) => {
+    if (habit.chosen) {
+      console.log("habit already chosen");
+      return;
+    }
     setSelectedHabit(habit);
     setShowDetailModal(true);
   };

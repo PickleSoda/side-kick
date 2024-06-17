@@ -16,7 +16,7 @@ import { chevronBackOutline, eyeOffOutline, eyeOutline, logoFacebook, logoGoogle
 import { useStoreState } from "pullstate";
 import { userStore } from "../../../store/userStore";
 
-import BackgroundImg from "../../../out/img/bg-white.png";  
+import BackgroundImg from "../../../public/img/bg-white.png";  
 
 const Signup = () => {
   // Add your component's state and other initializations here

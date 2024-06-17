@@ -10,7 +10,6 @@ type StoreProps = {
   menuOpen: boolean;
   notificationsOpen: boolean;
   currentPage: number | null;
-  homeItems: HomeItem[];
   lists: TodoListItem[];
   notifications: NotificationItem[];
   settings: Settings;
@@ -24,7 +23,6 @@ const Store = new PullStateStore<StoreProps>({
   menuOpen: false,
   notificationsOpen: false,
   currentPage: null,
-  homeItems,
   lists,
   notifications,
   settings,
@@ -36,7 +34,7 @@ export default Store;
 
 
 export async function initializeAppState() {
-  console.log("Initializing user state");
+  console.log("Initializing app state");
   const savedState = await Preferences.get({ key: "appState" });
   console.log(savedState);
   if (savedState && typeof savedState.value === "string") {
@@ -49,10 +47,10 @@ export async function initializeAppState() {
       console.error("Saved state is not valid");
     }
   }
-  const response = await getHabits();
-  console.log('server habits',response);
+  const habits = await getHabits();
+  console.log('server habits',habits);
   Store.update((state) => {
-    state.habits = response.data;
+    state.habits = habits.data;
   });
 }
 
@@ -64,13 +62,17 @@ function isStoreProps(obj: any): obj is StoreProps {
     typeof obj.menuOpen === "boolean" &&
     typeof obj.notificationsOpen === "boolean" &&
     (typeof obj.currentPage === "number" || obj.currentPage === null) &&
-    Array.isArray(obj.homeItems) &&
     Array.isArray(obj.lists) &&
     Array.isArray(obj.notifications) &&
     typeof obj.settings === "object" &&
     (typeof obj.selectedList === "object" || obj.selectedList === undefined) &&
     Array.isArray(obj.habits)
   );
-
-
 }
+
+Store.createReaction(
+  (state) => state,
+  (state: StoreProps) => {
+    Preferences.set({ key: "appState", value: JSON.stringify(state) });
+  }
+);

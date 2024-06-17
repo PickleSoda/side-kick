@@ -1,3 +1,4 @@
+import exp from "constants";
 import { request } from "../lib/axios";
 
 export const loginRequest = async (login: string, password: string) => {
@@ -56,3 +57,18 @@ export const initializeCommitment = async (data: {
     },
   });
 };
+
+
+export const getCommitments = async () => {
+  return request({
+    url: "/user/commitments",
+    method: "GET",
+  });
+}
+
+export const getGroups = async () => {
+  return request({
+    url: "/user/group-chats",
+    method: "GET",
+  });
+}

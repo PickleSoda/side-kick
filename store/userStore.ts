@@ -10,6 +10,7 @@ const initialState: IUser = {
   avatar: characters[0], // Initialize habits as an empty array
   alarm: { hours: 0, minutes: 0, meridiem: "am" },
   habits: [],
+  groups: [],
 };
 
 const userStore = new PullStateStore(initialState);
@@ -74,7 +75,6 @@ userStore.createReaction(
   (state) => state,
   (state: IUser) => {
     Preferences.set({ key: "userState", value: JSON.stringify(state) });
-    document.documentElement.classList.toggle("dark");
   }
 );
 // Export the store and actions

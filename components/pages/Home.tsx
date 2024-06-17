@@ -27,11 +27,12 @@ const Home = () => {
 
   return (
     <IonPage>
-      <IonToolbar className="transparent-bg">
+      <IonHeader translucent={true} className='shadow-none' mode='md'>
+      <IonToolbar className="transparent-bg ion-padding">
       <ToolBar />
       </IonToolbar>
+      </IonHeader>
       <IonContent className="ion-padding" fullscreen>
-        <IonHeader collapse="condense">
           <div className='h-[75vh] flex flex-col justify-between items-center'>
             <div className='text-xl text-center'>Your <br /> Journey</div>
             <div className='text-3xl text-center'>Meditate <br /> for 5 minutes daily</div>
@@ -62,7 +63,6 @@ const Home = () => {
               </div>
             </div>
           </div>
-        </IonHeader>
 
 
       </IonContent>
