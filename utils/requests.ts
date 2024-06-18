@@ -13,7 +13,7 @@ export const loginRequest = async (login: string, password: string) => {
 };
 export const registerRequest = async (
   email: string,
-  login: string,
+  username: string,
   password: string
 ) => {
   return request({
@@ -21,7 +21,7 @@ export const registerRequest = async (
     method: "POST",
     data: {
       email: email,
-      username: login,
+      username: username,
       password: password,
     },
   });

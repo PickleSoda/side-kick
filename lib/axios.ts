@@ -15,7 +15,7 @@ interface InternalCustomAxiosRequestConfig extends AxiosRequestConfig {
 
 const client: AxiosInstance = axios.create({
   withCredentials: false,
-  baseURL: process.env.REACT_APP_API || 'http://192.168.10.117:5000',
+  baseURL: process.env.REACT_APP_API || 'http://127.0.0.1:5000',
 });
 
 let accessToken: string | null = userStore.getRawState().token;
