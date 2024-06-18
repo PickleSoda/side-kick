@@ -12,14 +12,27 @@ import { initializeUserState } from '../store/userStore';
 setupIonicReact({});
 
 const initUser = async () => {
-  const commitments = await getCommitments();
-  const groupChats = await getGroups();
-  console.log('server group chats', groupChats);
-  console.log('server commitments', commitments);
-  userStore.update((s) => {
-    s.commitments = commitments.data;
-    s.groups = groupChats.data;
-  });
+  try {
+    const commitments = await getCommitments();
+    console.log('server commitments', commitments);
+    userStore.update((s) => {
+      s.commitments = commitments.data;
+    });
+  }
+  catch (err: any) {
+    console.log(err);
+  }
+  try {
+    const groupChats = await getGroups();
+    console.log('server group chats', groupChats);
+    userStore.update((s) => {
+      s.groups = groupChats.data;
+    });
+  }
+  catch (err: any) {
+    console.log(err);
+  }
+
 }
 
 const AppShell = () => {
