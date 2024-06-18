@@ -24,10 +24,9 @@ const ListEntry = ({ group }: { group: any }) => {
 
 const AllChats = () => {
     const groups = userStore.useState((s) => s.groups);
-    const lists = Store.useState(selectors.getLists);
     return (
         <>
-            {groups.length === 0 ? (
+            {groups?.length === 0 ? (
                 <div className='flex justify-center items-center h-[75vh]'>
                     <h1 className='text-2xl'>No chats available</h1>
                 </div>
