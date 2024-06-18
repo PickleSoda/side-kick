@@ -33,7 +33,7 @@ const PickHabit = () => {
     const updateExtendedHabits = () => {
       const updatedHabits = habits.map((habit) => ({
         ...habit,
-        chosen: userHabits.some((userHabit) => userHabit.habit_id === habit.id),
+        chosen: userHabits?.some((userHabit) => userHabit.habit_id === habit.id),
       }));
       setExtendedHabits(updatedHabits);
     };
