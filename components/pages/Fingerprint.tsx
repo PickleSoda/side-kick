@@ -1,72 +1,74 @@
+import { IonButton, IonContent, IonHeader, IonIcon, IonPage } from "@ionic/react"
+import { userStore } from "../../store/userStore";
+import { IAlarm } from "../../types";
+import { useState } from "react";
+import { chevronBackOutline } from "ionicons/icons";
+import { useHistory } from "react-router";
+import ChargingButton from "../ui/ChargingButton.tsx";
 
-import {
-    IonPage,
-    IonHeader,
-    IonToolbar,
-    IonTitle,
-    IonButtons,
-    IonButton,
-    IonIcon,
-    IonContent,
-    IonMenuButton,
-    IonImg,
-  } from '@ionic/react';
-  import { useState } from 'react';
-  import { arrowForward, chatbubble, chatbubbleEllipses, notificationsOutline, removeCircle } from 'ionicons/icons';
-  import ToolBar from '../ui/ToolBar';
-  import { userStore } from '../../store/userStore';
-  import { useStoreState } from 'pullstate';
-  
-  
-  
-  
-  const Home = () => {
-    const selectedCharacter = useStoreState(userStore, (s) => s.avatar);
-  
+import HandshakeTime from "../ui/HandShakeTime.tsx";
+const Fingerprint = () => {
+
+    const userAlarm = userStore.useState<IAlarm>((s) => {
+        return s.alarm
+      });
+      const [alarmTime, setAlarmTime] = useState<IAlarm>({ hours: 0, minutes: 0, meridiem: "am" });
+
+      const history = useHistory();
+
     return (
-      <IonPage>
-        <IonHeader translucent={true} className='shadow-none' mode='md'>
-        <IonToolbar className="transparent-bg ion-padding">
-        <ToolBar />
-        </IonToolbar>
-        </IonHeader>
-        <IonContent className="ion-padding" fullscreen>
-            <div className='h-[75vh] flex flex-col justify-between items-center'>
-              <div className='text-xl text-center'>Your <br /> Journey</div>
-              <div className='text-3xl text-center'>Meditate <br /> for 5 minutes daily</div>
-              <div>
-                <div className='flex justify-between w-full'>
-                <IonImg
-                    src={selectedCharacter.img.src}
-                    className="w-36 -scale-x-100"
-                  />
-                <IonImg
-                    src={selectedCharacter.img.src}
-                    className="w-36"
-                  />
+        <IonPage>
+            <IonHeader className="text-white flex justify-between p-4">
+                <div>
+                    <IonIcon icon={chevronBackOutline} className="w-6 h-6 bg-primary " onClick={() => history.push("/habits/pick")}/>
                 </div>
-                <div className='flex justify-between w-full text-2xl text-center'>
-                  <div>
-                    <IonIcon icon={arrowForward} />
-                    <p>nudge</p>
+                <div className="leading-3">
+                    <p>Handshake</p><br />
+                    <p>subtitle</p>
+                </div>
+                <div>
+                    &nbsp;
+                </div>
+            </IonHeader>
+            <IonContent className="flex flex-col justify-center items-center min-h-screen">
+                <div className="flex items-center justify-center">
+                    <h3>
+                        We will <br /> shake <br /> hands <br /> everyday
+                    </h3>
+                <div>
+                    <HandshakeTime alarm={userAlarm} setAlarm={setAlarmTime} />
+                </div>
+                </div>
+                <div className="mt-4 flex justify-center">
+                    <ChargingButton />
+                </div>
+
+                <div className="px-4">
+                    <h3 className="text-xl">
+                        <span className="text-5xl">“</span>
+                        I will
+                        <input className="border-b-2 bg-transparent" type="text" placeholder="meditate for 5 minutes as soon as I wake up" />
+                        so that
+                        I can become
+                        <input className="border-b-2 bg-transparent" type="text" placeholder="more mindful person." />
+                        <span className="text-5xl">”</span>
+                    </h3>
+                </div>
+                <div className="flex flex-col items-start px-4">
+                    <div className="flex justify-start w-full">
+                        <h3 className="text-3xl font-extrabold">
+                            <span>Do the </span><br /><span className="colored-text"> handshake</span>
+                        </h3>
                     </div>
-                  <div>
-                    <IonIcon icon={chatbubbleEllipses} />
-                    <p>chat</p>
-                    </div>
-                  <div>
-                    <IonIcon icon={removeCircle} />
-                    <p>unmatch</p>
+                    <div className="flex justify-start w-full">
+                        <p className="text-xl">
+                            Agree on a desired time and <br />simultaneously press your <br />thumbs <span className="colored-text">for 3 seconds</span>
+                        </p>
                     </div>
                 </div>
-              </div>
-            </div>
-  
-  
-        </IonContent>
-      </IonPage>
-    );
-  };
-  
-  export default Home;
-  
+            </IonContent>
+        </IonPage>
+    )
+}
+
+export default Fingerprint

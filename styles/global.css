@@ -508,3 +508,48 @@ ion-modal#example-modal::part(backdrop) {
   background: rgba(209, 213, 219);
   opacity: 1;
 }
+
+.radial-gradient-bg {
+  background: radial-gradient(circle, rgb(223, 136, 151) 0%, transparent 70%);
+}
+
+/* chargind animation */
+
+/* chargingAnimation.css */
+@keyframes fillCircle {
+  from {
+    background: conic-gradient(F3B64B_1￼ 0deg, transparent 0deg);
+  }
+  to {
+    background: conic-gradient(F3B64B_1￼ 360deg, transparent 360deg);
+  }
+}
+
+.charging-circle {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 10px solid transparent; /* Transparent border */
+  overflow: hidden;
+  background: conic-gradient(F3B64B_1￼ 0deg, transparent 0deg); /* Initial background */
+  transition: background 3s linear;
+}
+
+.charging-circle.filling {
+  animation: fillCircle 3s linear forwards;
+}
+
+.charging-circle > * {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70%;
+  height: 70%;
+}
+
+
+.swiper-slide-active h1 {
+  color: orange !important;
+}
