@@ -21,7 +21,7 @@ import { useState } from "react"
 import DaysPassed from "./DaysPassed"
 const ToolBar = () => {
     const commitments = userStore.useState((s) => s.commitments)
-    const activeCommitments = commitments.filter((commitment) => commitment.status === 'Active')
+    const activeCommitments = commitments.filter((commitment) => commitment.status === 'Ongoing')
     const habits = Store.useState((s) => s.habits)
     const [isMenuOpen, setIsMenuOpen] = useState(false)
 
@@ -38,7 +38,7 @@ const ToolBar = () => {
         <>
             <div className=" toolbar">
                 {
-                    commitments?.length > 0 ?
+                    activeCommitments?.length > 0 ?
                         <div className="flex justify-between items-center">
                             <div className="flex gap-1">
                                 <IonIcon icon={heartCircle} style={{ width: '30px', height: '30px' }} />
@@ -48,7 +48,7 @@ const ToolBar = () => {
                                 <p>DAY <span className="text-2xl">1</span>/21</p>
                             </div>
                             {
-                                commitments.length > 1 ?
+                                activeCommitments.length > 1 ?
                                 <IonIcon icon={menuOutline} style={{ width: '30px', height: '30px' }} onClick={handleMenuClick} />
                                     : null
                             }
@@ -64,12 +64,12 @@ const ToolBar = () => {
                     <IonList>
 
                         {
-                            commitments.map((commitment, index) => (
+                            activeCommitments.map((commitment, index) => (
                                 <IonItem key={index}>
                                     <div className="flex justify-between items-center w-full">
                                         <div className="flex gap-1 text-lg">
                                             <IonIcon icon={heartCircle} style={{ width: '30px', height: '30px' }} />
-                                            <p>{habits.find((habit) => { return habit.id === commitment.habit_id })?.name}</p>
+                                            <p>{habits.find((habit) => { return habit.id === commitment.habit_duration.habit_id })?.name}</p>
                                         </div>
                                         <div className="flex w-24">
                                             <p className="px-1">DAY </p> <DaysPassed dateString={commitment.start_time} className="" />  <p>/</p> <p> {commitment.length_in_days}</p>
