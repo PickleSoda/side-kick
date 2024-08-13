@@ -1,4 +1,3 @@
-
 export interface IHabit {
   id?: string;
   name: string;
@@ -6,10 +5,11 @@ export interface IHabit {
   duration: number; // Assuming duration is in days
   selectDate: Date;
   chosen: boolean;
-  available_durations?: number[];
+  durations?: HabitDuration[];
+  reminder_schedules?: ReminderSchedule[];
+  created?: string;
 }
-export interface IGroup {
-}
+
 
 export interface ICommitment {
   alarm_time: string;
@@ -19,6 +19,7 @@ export interface ICommitment {
   length_in_days: number;
   start_time: string;
   status: string;
+  habit_duration: HabitDuration;
 }
 
 export interface IUser {
@@ -75,11 +76,11 @@ export interface ICharacter {
   info: string;
 }
 export interface IImg {
-    blurHeight: number;
-    blurWidth: number;
-    height: number;
-    src: string;
-    width: number;
+  blurHeight: number;
+  blurWidth: number;
+  height: number;
+  src: string;
+  width: number;
 }
 
 export interface IFormData {
@@ -119,3 +120,38 @@ export interface IFormData {
 //   ​​​
 //   start_time: "2024-05-30T03:47:35"
 // }
+
+export interface HabitDuration {
+  id?: string;
+  habit_id?: string;
+  duration: number;
+  notifications?: notifications[];
+  daily_tasks?: daily_tasks[];
+}
+
+export type notifications = {
+  id: string;
+  title: string;
+  description: string;
+  completed: boolean;
+  day_indexes: number[];
+  time: string;
+};
+
+export type daily_tasks = {
+  id: string;
+  title: string;
+  description: string;
+};
+
+export interface ReminderSchedule {
+  id: string;
+  text_template: string;
+  time: string;
+  requires_confirmation?: boolean;
+  is_active?: boolean;
+  habit_id?: string;
+  reminder_type?: string;
+  priority?: number;
+  day_indexes?: number[];
+}

@@ -33,7 +33,7 @@ const PickHabit = () => {
     const updateExtendedHabits = () => {
       const updatedHabits = habits.map((habit) => ({
         ...habit,
-        chosen: userHabits?.some((userHabit) => userHabit.habit_id === habit.id),
+        chosen: userHabits?.some((userHabit) => userHabit.habit_duration.habit_id === habit.id),
       }));
       setExtendedHabits(updatedHabits);
     };
@@ -85,10 +85,6 @@ const PickHabit = () => {
               >
                 <div>
                   <p>{habit.name}</p>
-                  {
-                    habit.available_durations &&
-                    <p className="colored-text text-xs">{habit.available_durations[1] || habit.available_durations[0]} DAYS</p>
-                  }
                 </div>
               </IonButton>
             ))}
@@ -108,13 +104,13 @@ const PickHabit = () => {
           </h1>
           <p>Lorem Ipsum Dolor Sit Amet, Ipsum Dolor Sit Ame</p>
           <div className="flex justify-center mt-4">
-            <IonButton
+            {/* <IonButton
               shape="round"
               onClick={handleNext}
               className="white-background font-bold px-12"
             >
               <p className="text-lg mx-12">NEXT</p>
-            </IonButton>
+            </IonButton> */}
           </div>
         </div>
         <DetailModal

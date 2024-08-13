@@ -21,6 +21,7 @@ import { useState } from "react"
 import DaysPassed from "./DaysPassed"
 const ToolBar = () => {
     const commitments = userStore.useState((s) => s.commitments)
+    const activeCommitments = commitments.filter((commitment) => commitment.status === 'Active')
     const habits = Store.useState((s) => s.habits)
     const [isMenuOpen, setIsMenuOpen] = useState(false)
 

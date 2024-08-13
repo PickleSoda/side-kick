@@ -2,6 +2,8 @@ import { Store as PullStateStore } from "pullstate";
 import { IUser, IHabit, IAlarm, ICharacter, ICommitment } from "../types";
 import { characters } from "../mock";
 import { Preferences } from "@capacitor/preferences";
+import { getCommitments,getGroups } from "../utils/requests";
+
 const initialState: IUser = {
   isAuth: false,
   username: "",
@@ -28,11 +30,16 @@ const setAvatar = (avatar: ICharacter) =>
 
 // New actions for managing habits
 const addHabit = (habit: IHabit) =>
-  userStore.update((state) => ({ ...state, commitments: [...state.commitments, habit] }));
+  userStore.update((state) => ({
+    ...state,
+    commitments: [...state.commitments, habit],
+  }));
 const removeHabit = (id: string) =>
   userStore.update((state) => ({
     ...state,
-    commitments: state.commitments.filter((commitment: ICommitment) => commitment.habit_id !== id),
+    commitments: state.commitments.filter(
+      (commitment: ICommitment) => commitment.habit_id !== id
+    ),
   }));
 const loginUser = ({
   username,
@@ -53,8 +60,27 @@ const logoutUser = () => {
     s.isAuth = false;
     s.username = "";
     s.token = "";
+    s.commitments = [];
+    s.groups = [];
+    s.alarm = { hours: 0, minutes: 0, meridiem: "am" };
   });
 };
+
+// const getServerCommitments = async () => {
+//   const commitments = await getCommitments();
+//   console.log("server commitments", commitments);
+//   userStore.update((s) => {
+//     s.commitments = commitments.data;
+//   });
+// };
+
+// const getSererGroups = async () => {
+//   const groupChats = await getGroups();
+//   console.log("server group chats", groupChats);
+//   userStore.update((s) => {
+//     s.groups = groupChats.data;
+//   });
+// };
 
 const setUserState = (alarm: IAlarm) =>
   userStore.update((state) => ({ ...state, alarm: alarm }));
@@ -90,4 +116,6 @@ export {
   setUserState,
   loginUser,
   logoutUser,
+  // getServerCommitments,
+  // getSererGroups,
 };
