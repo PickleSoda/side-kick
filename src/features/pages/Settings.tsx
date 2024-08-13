@@ -12,7 +12,7 @@ import {
 import Store from '../../store/index.ts';
 import * as selectors from '../../store/selectors.js';
 import { setSettings } from '../../store/actions.ts';
-import useAlerts from '../native/hooks/useAlerts.tsx';
+import useAlerts from '../application/hooks/useAlerts.tsx';
 
 
 

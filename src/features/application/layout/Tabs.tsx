@@ -9,18 +9,18 @@ import {
   IonLabel,
 } from '@ionic/react';
 import { personOutline, chatbubbleEllipsesOutline, homeOutline, fingerPrintOutline,checkmarkOutline , gitBranchOutline } from 'ionicons/icons';
-import Home from './Home';
-import Settings from './Settings';
-import PickHabit from '../habits/pages/Pick';
+import Home from '../../pages/Home';
+import Settings from '../../pages/Settings';
+import PickHabit from '../../habits/pages/Pick';
 
-import Chats from '../chats/pages';
-import ChatDetails from '../chats/pages/details';
-import SingIn from '../auth/pages/Signin';
-import Signup from '../auth/pages/Signup';
-import ChooseCharacter from '../intro/pages/ChooseCharacter';
-import Alarm from '../intro/pages/Alarm';
-import Landing from '../intro/pages/Landing';
-import FingerPrint from './Fingerprint';
+import Chats from '../../chats/pages';
+import ChatDetails from '../../chats/pages/details';
+import SingIn from '../../auth/pages/Signin';
+import Signup from '../../auth/pages/Signup';
+import ChooseCharacter from '../../intro/pages/ChooseCharacter';
+import Alarm from '../../intro/pages/Alarm';
+import Landing from '../../intro/pages/Landing';
+import FingerPrint from '../../pages/Fingerprint';
 const Tabs = () => {
   return (
     <IonTabs>

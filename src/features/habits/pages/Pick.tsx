@@ -11,7 +11,7 @@ import {
   IonRow,
   IonImg,
 } from "@ionic/react";
-import ToolBar from "../../../components/ui/ToolBar";
+import ToolBar from "../../application/components/ui/ToolBar";
 import { useHistory } from "react-router";
 import ChooseHabitModal from "../components/modals/ChooseHabitModal";
 import { userStore, addHabit, removeHabit } from "../../../store/userStore";

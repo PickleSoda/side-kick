@@ -13,7 +13,7 @@ import { chevronBackOutline } from 'ionicons/icons';
 import { IHabit, HabitDuration } from '../../types';
 import { IAlarm } from '../../../../types';
 import { initializeCommitment, getHabitById, getCommitments } from '../../requests';
-import AlarmClock from '../../../alarm/components/AlarmClock';
+import AlarmClock from '../../../application/components/alarm/components/AlarmClock';
 import { userStore } from '../../../../store/userStore';
 import IntensitySelect from '../IntensitySelect';
 type ChooseHabitModalProps = {

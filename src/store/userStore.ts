@@ -1,6 +1,6 @@
 import { Store as PullStateStore } from "pullstate";
 import { IUser, IHabit, IAlarm, ICharacter, ICommitment } from "../types";
-import { characters } from "../mock";
+import { characters } from "../features/application/mock";
 import { Preferences } from "@capacitor/preferences";
 import { getCommitments,getGroups } from "../utils/requests";
 

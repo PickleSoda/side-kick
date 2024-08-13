@@ -1,5 +1,5 @@
 import Store from '.';
-import { ListItem, Settings, TodoListItem } from '../mock';
+import { ListItem, Settings, TodoListItem } from '../features/application/mock';
 
 export const setMenuOpen = (open: boolean) => {
   Store.update(s => {

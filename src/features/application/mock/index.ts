@@ -1,4 +1,4 @@
-import { ICharacter, IHabit } from "../types";
+import { ICharacter, IHabit } from "../../../types";
 
 import FoxImg from "../public/chars/fox/fox.svg";
 import FoxText from "../public/chars/fox/fox-name.svg";

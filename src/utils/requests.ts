@@ -1,5 +1,5 @@
 import exp from "constants";
-import { request } from "../lib/axios";
+import { request } from "../features/application/lib/axios";
 import { HabitDuration } from "../types";
 
 export const loginRequest = async (login: string, password: string) => {

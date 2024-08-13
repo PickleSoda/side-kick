@@ -17,7 +17,7 @@ import { chevronBackOutline } from "ionicons/icons";
 import { setAvatar } from "../../../store/userStore";
 import { useHistory } from "react-router-dom";
 
-import { characters } from "../../../mock/index";
+import { characters } from "../../application/mock/index";
 
 const ChooseCharacter = () => {
   console.log(characters);

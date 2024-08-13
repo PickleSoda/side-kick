@@ -1,5 +1,5 @@
 import { useStoreState } from 'pullstate';
-import { TodoListItem } from '../../../mock';
+import { TodoListItem } from '../../application/mock';
 import Store from '../../../store';
 import * as selectors from '../../../store/selectors';
 import {
@@ -14,7 +14,7 @@ import {
   IonImg,
 } from '@ionic/react';
 import { userStore } from '../../../store/userStore';
-import ToolBar from '../../../components/ui/ToolBar';
+import ToolBar from '../../application/components/ui/ToolBar';
 
 const ListEntry = ({ list }: { list: TodoListItem }) => {
   return (

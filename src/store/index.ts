@@ -11,7 +11,7 @@ import {
   NotificationItem,
   Settings,
   habits,
-} from "../mock";
+} from "../features/application/mock";
 import { IHabit } from "../types";
 
 type StoreProps = {

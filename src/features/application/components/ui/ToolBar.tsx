@@ -7,8 +7,8 @@ import {
 } from "@ionic/react"
 import { heartCircle, menuOutline, navigate } from "ionicons/icons"
 import { motion } from "framer-motion"
-import { userStore } from "../../store/userStore"
-import Store from "../../store"
+import { userStore } from "../../../../store/userStore"
+import Store from "../../../../store"
 import { useState } from "react"
 import DaysPassed from "./DaysPassed"
 const ToolBar = () => {

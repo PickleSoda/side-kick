@@ -1,4 +1,4 @@
-import ToolBar from '../../../components/ui/ToolBar';
+import ToolBar from '../../application/components/ui/ToolBar';
 import { userStore } from '../../../store/userStore';
 import {
     IonPage,
