@@ -151,9 +151,9 @@ const Signup = () => {
                 value={formData.username}
                 onInput={(e: any) => handleInputChange(e)}
                 className="sign-input-fields"
-                label="Email"
+                label="Username"
                 labelPlacement="floating"
-                placeholder="Enter email"
+                placeholder="Enter username"
                 type="text"
                 name="username"
               ></IonInput>
@@ -207,7 +207,7 @@ const Signup = () => {
           </IonRow>
           <IonRow>
             <IonCol>
-              {error && <p className="error-message">{error}</p>}
+              {error && <p className="text-red-600 text-base pl-2 -mt-1">{error}</p>}
             </IonCol>
           </IonRow>
           <IonRow>
@@ -218,6 +218,7 @@ const Signup = () => {
                 onClick={() => {
                   handleSignUp()
                 }}
+                mode="ios"
               >
                 Sign up
               </IonButton>

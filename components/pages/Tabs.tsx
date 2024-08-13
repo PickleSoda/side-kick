@@ -62,7 +62,7 @@ const Tabs = () => {
         </IonTabButton>
         <IonTabButton tab="tab5" href="/settings">
           <IonIcon icon={personOutline} />
-          <IonLabel>Settings</IonLabel>
+          <IonLabel>Profile</IonLabel>
         </IonTabButton>
         {/* <IonTabButton tab="tab6" href="/signin">
           <IonIcon icon={personOutline} />

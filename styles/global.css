@@ -476,9 +476,7 @@ ion-card-content {
 .sign-input-fields {
   background-color: white;
   border-radius: 15px;
-}
-
-.sign-input-fields {
+  border: #acacac 1px solid;
   color: black;
   height: 35px;
   font-size: 16px;
@@ -547,9 +545,4 @@ ion-modal#example-modal::part(backdrop) {
   transform: translate(-50%, -50%);
   width: 70%;
   height: 70%;
-}
-
-
-.swiper-slide-active h1 {
-  color: orange !important;
 }

@@ -83,18 +83,18 @@ const SingIn = () => {
   //   history.push("/habits/pick");
   // };
 
-  useEffect(() => {
-    const showHandler = () => setKeyboardVisible(true);
-    const hideHandler = () => setKeyboardVisible(false);
+  // useEffect(() => {
+  //   const showHandler = () => setKeyboardVisible(true);
+  //   const hideHandler = () => setKeyboardVisible(false);
 
-    Keyboard.addListener('keyboardWillShow', showHandler);
-    Keyboard.addListener('keyboardWillHide', hideHandler);
+  //   Keyboard.addListener('keyboardWillShow', showHandler);
+  //   Keyboard.addListener('keyboardWillHide', hideHandler);
 
 
-    return () => {
-      Keyboard.removeAllListeners();
-    };
-  }, []);
+  //   return () => {
+  //     Keyboard.removeAllListeners();
+  //   };
+  // }, []);
   return (
     <IonPage>
       <IonContent className="char-bg content-div">

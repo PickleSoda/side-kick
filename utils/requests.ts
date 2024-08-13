@@ -1,5 +1,6 @@
 import exp from "constants";
 import { request } from "../lib/axios";
+import { HabitDuration } from "../types";
 
 export const loginRequest = async (login: string, password: string) => {
   return request({
@@ -11,6 +12,7 @@ export const loginRequest = async (login: string, password: string) => {
     },
   });
 };
+
 export const registerRequest = async (
   email: string,
   username: string,
@@ -33,16 +35,25 @@ export const getHabits = async () => {
     method: "GET",
   });
 };
+
+export const getHabitById = async (id: string) => {
+  return request({
+    url: `/habits/${id}`,
+    method: "GET",
+  });
+};
+
 export const initializeUserState = async () => {
   return request({
     url: "/user",
     method: "GET",
   });
 };
+
 export const initializeCommitment = async (data: {
   habit_id: string;
   intensity: string;
-  duration: number;
+  duration: HabitDuration;
   alarm_time: string;
 }) => {
   const { habit_id, intensity, duration, alarm_time } = data;
@@ -58,17 +69,16 @@ export const initializeCommitment = async (data: {
   });
 };
 
-
 export const getCommitments = async () => {
   return request({
     url: "/user/commitments",
     method: "GET",
   });
-}
+};
 
 export const getGroups = async () => {
   return request({
     url: "/user/group-chats",
     method: "GET",
   });
-}
+};
