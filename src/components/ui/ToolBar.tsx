@@ -21,7 +21,7 @@ import { useState } from "react"
 import DaysPassed from "./DaysPassed"
 const ToolBar = () => {
     const commitments = userStore.useState((s) => s.commitments)
-    const activeCommitments = commitments.filter((commitment) => commitment.status === 'Ongoing')
+    const [selectedCommitment, setSelectedCommitment] = useState(commitments[0] || null)
     const habits = Store.useState((s) => s.habits)
     const [isMenuOpen, setIsMenuOpen] = useState(false)
 
@@ -38,18 +38,25 @@ const ToolBar = () => {
         <>
             <div className=" toolbar">
                 {
-                    activeCommitments?.length > 0 ?
+                    selectedCommitment ?
                         <div className="flex justify-between items-center">
                             <div className="flex gap-1">
                                 <IonIcon icon={heartCircle} style={{ width: '30px', height: '30px' }} />
-                                <p className="text-lg leading-4">Smoke<br />Less</p>
+                                <p>{habits.find((habit) => { return habit.id === selectedCommitment.habit_duration.habit_id })?.name}</p>
+
                             </div>
-                            <div className="text-lg">
-                                <p>DAY <span className="text-2xl">1</span>/21</p>
+                            <div className="flex w-24">
+
+                                {selectedCommitment.status == "Ongoing" ?
+                                    <>
+                                        <p className="px-1">DAY </p> <DaysPassed dateString={selectedCommitment.start_time} className="" />  <p>/</p> <p> {selectedCommitment.length_in_days}</p>
+                                    </>
+                                    : <p className="px-1">Pending</p>
+                                }
                             </div>
                             {
-                                activeCommitments.length > 1 ?
-                                <IonIcon icon={menuOutline} style={{ width: '30px', height: '30px' }} onClick={handleMenuClick} />
+                                commitments.length > 1 ?
+                                    <IonIcon icon={menuOutline} style={{ width: '30px', height: '30px' }} onClick={handleMenuClick} />
                                     : null
                             }
                         </div>
@@ -64,15 +71,20 @@ const ToolBar = () => {
                     <IonList>
 
                         {
-                            activeCommitments.map((commitment, index) => (
-                                <IonItem key={index}>
+                            commitments.map((commitment, index) => (
+                                <IonItem key={index} onClick={() => { setSelectedCommitment(commitment); setIsMenuOpen(false) }}>
                                     <div className="flex justify-between items-center w-full">
                                         <div className="flex gap-1 text-lg">
                                             <IonIcon icon={heartCircle} style={{ width: '30px', height: '30px' }} />
                                             <p>{habits.find((habit) => { return habit.id === commitment.habit_duration.habit_id })?.name}</p>
                                         </div>
                                         <div className="flex w-24">
-                                            <p className="px-1">DAY </p> <DaysPassed dateString={commitment.start_time} className="" />  <p>/</p> <p> {commitment.length_in_days}</p>
+                                            {commitment.status == "Ongoing" ?
+                                                <>
+                                                    <p className="px-1">DAY </p> <DaysPassed dateString={commitment.start_time} className="" />  <p>/</p> <p> {commitment.length_in_days}</p>
+                                                </>
+                                                : <p className="px-1">Pending</p>
+                                            }
                                         </div>
                                     </div>
                                 </IonItem>

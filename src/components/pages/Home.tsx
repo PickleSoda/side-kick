@@ -16,10 +16,10 @@ import { arrowForward, chatbubble, chatbubbleEllipses, notificationsOutline, rem
 import ToolBar from '../ui/ToolBar';
 import { userStore } from '../../store/userStore';
 import { useStoreState } from 'pullstate';
+import Markdown from 'react-markdown'
 
 
-
-
+const markdown = '# Hi,*Pluto*!'
 const FingerPrint = () => {
   const selectedCharacter = useStoreState(userStore, (s) => s.avatar);
 
@@ -33,6 +33,7 @@ const FingerPrint = () => {
       <IonContent className="ion-padding" fullscreen>
         <div className='h-[75vh] flex flex-col justify-between items-center'>
           <div className='text-xl text-center'>Your <br /> Journey</div>
+          <Markdown>{markdown}</Markdown>
           <div className='text-3xl text-center'>Meditate <br /> for 5 minutes daily</div>
           <div>
             <div className='flex justify-between w-full'>

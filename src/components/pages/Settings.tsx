@@ -9,10 +9,10 @@ import {
   IonToggle,
 } from '@ionic/react';
 
-import Store from '../../store';
-import * as selectors from '../../store/selectors';
+import Store from '../../store/index.ts';
+import * as selectors from '../../store/selectors.js';
 import { setSettings } from '../../store/actions.ts';
-import useAlerts from '../../hooks/useAlerts';
+import useAlerts from '../../hooks/useAlerts.tsx';
 
 
 

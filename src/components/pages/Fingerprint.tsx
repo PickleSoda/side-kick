@@ -1,6 +1,6 @@
 import { IonButton, IonContent, IonHeader, IonIcon, IonPage } from "@ionic/react"
-import { userStore } from "../../store/userStore";
-import { IAlarm } from "../../types";
+import { userStore } from "../../store/userStore.ts";
+import { IAlarm } from "../../types/index.ts";
 import { useState } from "react";
 import { chevronBackOutline } from "ionicons/icons";
 import { useHistory } from "react-router";
