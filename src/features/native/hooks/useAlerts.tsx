@@ -1,6 +1,6 @@
 import { useIonAlert } from '@ionic/react';
-import { request } from '../lib/axios';
-import { logoutUser } from '../store/userStore';
+import { request } from '../../../lib/axios';
+import { logoutUser } from '../../../store/userStore';
 
 const useAlerts = () => {
   const [presentAlert] = useIonAlert();

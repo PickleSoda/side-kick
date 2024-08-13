@@ -4,8 +4,8 @@ import { Redirect, Route } from 'react-router-dom';
 import Landing from './Landing';
 import Alarm from './Alarm';
 import ChooseCharacter from './ChooseCharacter';
-import Signup from '../Auth/Signup';
-import SingIn from '../Auth/Signin';
+import Signup from '../../auth/pages/Signup';
+import SingIn from '../../auth/pages/Signin';
 
 const Intro = () => {
   return (

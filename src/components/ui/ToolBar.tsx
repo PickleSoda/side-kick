@@ -2,16 +2,8 @@ import {
     IonIcon,
     IonModal,
     IonContent,
-    IonToolbar,
-    IonTitle,
-    IonButtons,
-    IonButton,
     IonList,
     IonItem,
-    IonAvatar,
-    IonImg,
-    IonLabel,
-
 } from "@ionic/react"
 import { heartCircle, menuOutline, navigate } from "ionicons/icons"
 import { motion } from "framer-motion"

@@ -14,7 +14,7 @@ import {
   IonImg,
 } from '@ionic/react';
 import { userStore } from '../../../store/userStore';
-import ToolBar from '../../ui/ToolBar';
+import ToolBar from '../../../components/ui/ToolBar';
 
 const ListEntry = ({ list }: { list: TodoListItem }) => {
   return (

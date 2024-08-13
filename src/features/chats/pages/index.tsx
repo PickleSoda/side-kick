@@ -1,7 +1,4 @@
-import { TodoListItem } from '../../../mock';
-import Store from '../../../store';
-import * as selectors from '../../../store/selectors';
-import ToolBar from '../../ui/ToolBar';
+import ToolBar from '../../../components/ui/ToolBar';
 import { userStore } from '../../../store/userStore';
 import {
     IonPage,

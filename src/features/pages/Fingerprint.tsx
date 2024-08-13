@@ -4,9 +4,9 @@ import { IAlarm } from "../../types/index.ts";
 import { useState } from "react";
 import { chevronBackOutline } from "ionicons/icons";
 import { useHistory } from "react-router";
-import ChargingButton from "../ui/ChargingButton.tsx";
+import ChargingButton from "../../components/ui/ChargingButton.tsx";
 
-import HandshakeTime from "../ui/HandShakeTime.tsx";
+import HandshakeTime from "../alarm/components/HandShakeTime.tsx";
 const Fingerprint = () => {
 
     const userAlarm = userStore.useState<IAlarm>((s) => {

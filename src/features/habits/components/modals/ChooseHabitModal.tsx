@@ -8,23 +8,21 @@ import {
   IonButton,
   IonIcon,
   IonRow,
-  IonSelect,
-  IonSelectOption,
-  IonDatetime
 } from '@ionic/react';
 import { chevronBackOutline } from 'ionicons/icons';
-import { IAlarm, IHabit, HabitDuration } from '../../../types';
-import { initializeCommitment, getHabitById, getCommitments } from '../../../utils/requests';
-import AlarmClock from '../../ui/AlarmClock';
-import { userStore } from '../../../store/userStore';
-import IntensitySelect from '../../ui/IntensitySelect';
-type AddUserHabitProps = {
+import { IHabit, HabitDuration } from '../../types';
+import { IAlarm } from '../../../../types';
+import { initializeCommitment, getHabitById, getCommitments } from '../../requests';
+import AlarmClock from '../../../alarm/components/AlarmClock';
+import { userStore } from '../../../../store/userStore';
+import IntensitySelect from '../IntensitySelect';
+type ChooseHabitModalProps = {
   open: boolean;
   onDidDismiss: () => void;
   habit: IHabit | undefined;
 };
 
-const DetailModal: React.FC<AddUserHabitProps> = ({ open, onDidDismiss, habit }) => {
+const ChooseHabitModal: React.FC<ChooseHabitModalProps> = ({ open, onDidDismiss, habit }) => {
   const [selectedDuration, setSelectedDuration] = useState<HabitDuration | undefined>(undefined);
   const [intensity, setIntensity] = useState('');
   const [alarmTime, setAlarmTime] = useState<IAlarm>({ hours: 0, minutes: 0, meridiem: "am" });
@@ -105,4 +103,4 @@ const DetailModal: React.FC<AddUserHabitProps> = ({ open, onDidDismiss, habit })
   );
 };
 
-export default DetailModal;
+export default ChooseHabitModal;

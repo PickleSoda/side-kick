@@ -11,15 +11,15 @@ import {
 import { personOutline, chatbubbleEllipsesOutline, homeOutline, fingerPrintOutline,checkmarkOutline , gitBranchOutline } from 'ionicons/icons';
 import Home from './Home';
 import Settings from './Settings';
-import PickHabit from './Habits/Pick';
+import PickHabit from '../habits/pages/Pick';
 
-import Chats from './Chats';
-import ChatDetails from './Chats/details';
-import SingIn from './Auth/Signin';
-import Signup from './Auth/Signup';
-import ChooseCharacter from './Intro/ChooseCharacter';
-import Alarm from './Intro/Alarm';
-import Landing from './Intro/Landing';
+import Chats from '../chats/pages';
+import ChatDetails from '../chats/pages/details';
+import SingIn from '../auth/pages/Signin';
+import Signup from '../auth/pages/Signup';
+import ChooseCharacter from '../intro/pages/ChooseCharacter';
+import Alarm from '../intro/pages/Alarm';
+import Landing from '../intro/pages/Landing';
 import FingerPrint from './Fingerprint';
 const Tabs = () => {
   return (

@@ -11,10 +11,9 @@ import {
   IonRow,
   IonImg,
 } from "@ionic/react";
-import ToolBar from "../../ui/ToolBar";
-import DetailModal from "./DetailModal";
+import ToolBar from "../../../components/ui/ToolBar";
 import { useHistory } from "react-router";
-import AddHabit from "./DetailModal";
+import ChooseHabitModal from "../components/modals/ChooseHabitModal";
 import { userStore, addHabit, removeHabit } from "../../../store/userStore";
 import Store from "../../../store";
 import { useStoreState } from "pullstate";
@@ -113,7 +112,7 @@ const PickHabit = () => {
             </IonButton> */}
           </div>
         </div>
-        <DetailModal
+        <ChooseHabitModal
           open={showDetailModal && selectedHabit !== undefined}
           onDidDismiss={() => setShowDetailModal(false)}
           habit={selectedHabit}

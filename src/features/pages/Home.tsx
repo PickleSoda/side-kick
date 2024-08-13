@@ -13,7 +13,7 @@ import {
 } from '@ionic/react';
 import { useState } from 'react';
 import { arrowForward, chatbubble, chatbubbleEllipses, notificationsOutline, removeCircle } from 'ionicons/icons';
-import ToolBar from '../ui/ToolBar';
+import ToolBar from '../../components/ui/ToolBar';
 import { userStore } from '../../store/userStore';
 import { useStoreState } from 'pullstate';
 import Markdown from 'react-markdown'
