@@ -18,16 +18,10 @@ const Fingerprint = () => {
 
     return (
         <IonPage>
-            <IonHeader className="text-white flex justify-between p-4">
-                <div>
-                    <IonIcon icon={chevronBackOutline} className="w-6 h-6 bg-primary " onClick={() => history.push("/habits/pick")}/>
-                </div>
+            <IonHeader className="text-white text-center p-4">
                 <div className="leading-3">
-                    <p>Handshake</p><br />
-                    <p>subtitle</p>
-                </div>
-                <div>
-                    &nbsp;
+                    {/* <p>Handshake</p><br />
+                    <p>subtitle</p> */}
                 </div>
             </IonHeader>
             <IonContent className="flex flex-col justify-center items-center min-h-screen">
@@ -43,7 +37,7 @@ const Fingerprint = () => {
                     <ChargingButton />
                 </div>
 
-                <div className="px-4">
+                {/* <div className="px-4">
                     <h3 className="text-xl">
                         <span className="text-5xl">“</span>
                         I will
@@ -53,8 +47,8 @@ const Fingerprint = () => {
                         <input className="border-b-2 bg-transparent" type="text" placeholder="more mindful person." />
                         <span className="text-5xl">”</span>
                     </h3>
-                </div>
-                <div className="flex flex-col items-start px-4">
+                </div> */}
+                <div className="flex flex-col items-start px-4 pt-20">
                     <div className="flex justify-start w-full">
                         <h3 className="text-3xl font-extrabold">
                             <span>Do the </span><br /><span className="colored-text"> handshake</span>
