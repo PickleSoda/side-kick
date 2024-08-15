@@ -9,7 +9,7 @@ const initialState: GroupStoreProps = {
   groups: [],
 };
 
-const userStore = new PullStateStore(initialState);
+const groupStore = new PullStateStore(initialState);
 
 
 // const getServerGroups = async () => {
@@ -42,6 +42,6 @@ const userStore = new PullStateStore(initialState);
 //   }
 // );
 export {
-  userStore,
+  groupStore,
   // getSererGroups,
 };
