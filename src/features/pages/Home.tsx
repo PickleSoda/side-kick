@@ -1,27 +1,21 @@
-
+import React from 'react';
 import {
   IonPage,
   IonHeader,
   IonToolbar,
-  IonTitle,
-  IonButtons,
-  IonButton,
   IonIcon,
   IonContent,
-  IonMenuButton,
   IonImg,
 } from '@ionic/react';
-import { useState } from 'react';
-import { arrowForward, chatbubble, chatbubbleEllipses, notificationsOutline, removeCircle } from 'ionicons/icons';
+import { arrowForward, chatbubbleEllipses, removeCircle } from 'ionicons/icons';
 import ToolBar from '../application/components/ui/ToolBar';
-import { userStore } from '../../store/userStore';
-import { useStoreState } from 'pullstate';
+import { userStore } from '../auth/store/UserStore';
 import Markdown from 'react-markdown'
 
 
 const markdown = '# Hi,*Pluto*!'
-const FingerPrint = () => {
-  const selectedCharacter = useStoreState(userStore, (s) => s.avatar);
+const Home = () => {
+  const selectedCharacter = userStore.useState((s) => s.avatar);
 
   return (
     <IonPage>
@@ -69,4 +63,4 @@ const FingerPrint = () => {
   );
 };
 
-export default FingerPrint;
+export default Home;

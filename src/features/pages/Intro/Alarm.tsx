@@ -10,15 +10,13 @@ import {
   IonRow,
 } from "@ionic/react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { useHistory } from "react-router-dom";
 import { chevronBackOutline } from "ionicons/icons";
 import { useStoreState } from "pullstate";
-import { userStore, setUserState } from "../../../store/userStore";
+import { userStore, setUserAlarm } from "../../auth/store/UserStore";
 import { IAlarm } from "../../../types";
 import { useIonRouter } from "@ionic/react";
 
 const Alarm = () => {
-  const history = useHistory();
 
   const [alarm, setAlarm] = useState<IAlarm>({
     hours: 0,
@@ -57,7 +55,7 @@ const Alarm = () => {
   const router = useIonRouter()
 
   const handleNext = () => {
-    setUserState(alarm);
+    setUserAlarm(alarm);
     router.push('/signup', 'forward', 'replace')
 
   };

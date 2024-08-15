@@ -1,20 +1,13 @@
-import { IonButton, IonContent, IonHeader, IonIcon, IonPage } from "@ionic/react"
-import { userStore } from "../../store/userStore.ts";
-import { IAlarm } from "../../types/index.ts";
-import { useState } from "react";
-import { chevronBackOutline } from "ionicons/icons";
-import { useHistory } from "react-router";
+import React from "react";
+import { IonContent, IonHeader, IonIcon, IonPage } from "@ionic/react"
+import { userStore } from "../auth/store/UserStore";
 import ChargingButton from "../application/components/ui/ChargingButton.tsx";
-
-import HandshakeTime from "../application/components/alarm/components/HandShakeTime.tsx";
+import HandshakeTime from "../application/components/alarm/HandShakeTime.tsx";
 const Fingerprint = () => {
 
-    const userAlarm = userStore.useState<IAlarm>((s) => {
+    const userAlarm = userStore.useState((s) => {
         return s.alarm
       });
-      const [alarmTime, setAlarmTime] = useState<IAlarm>({ hours: 0, minutes: 0, meridiem: "am" });
-
-      const history = useHistory();
 
     return (
         <IonPage>
@@ -30,7 +23,7 @@ const Fingerprint = () => {
                         We will <br /> shake <br /> hands <br /> everyday
                     </h3>
                 <div>
-                    <HandshakeTime alarm={userAlarm} setAlarm={setAlarmTime} />
+                    <HandshakeTime alarm={userAlarm} setAlarm={console.log}/>
                 </div>
                 </div>
                 <div className="mt-4 flex justify-center">

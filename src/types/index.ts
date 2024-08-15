@@ -6,7 +6,6 @@ export interface IHabit {
   selectDate: Date;
   chosen: boolean;
   durations?: HabitDuration[];
-  reminder_schedules?: ReminderSchedule[];
   created?: string;
 }
 
@@ -31,20 +30,6 @@ export interface IUser {
   alarm: IAlarm;
   commitments: ICommitment[]; // Add an array of Habit objects
   groups: any[];
-}
-export interface IStore {
-  currentIndex: number;
-  safeAreaTop: number;
-  safeAreaBottom: number;
-  menuOpen: boolean;
-  notificationsOpen: boolean;
-  currentPage: string | null;
-  homeItems: object[];
-  lists: object[];
-  notifications: object[];
-  settings: {
-    enableNotifications: boolean;
-  };
 }
 export interface IImage {
   title: string;
@@ -89,38 +74,6 @@ export interface IFormData {
   password: string;
 }
 
-// export interface IGroup {
-//   commitments: Array [ {…}, {…} ]
-//   ​​​​
-//   0: Object { habit_id: 14, id: 3, name: "testuser" }
-//   ​​​​​
-//   habit_id: 14
-//   ​​​​​
-//   id: 3
-//   ​​​​​
-//   name: "testuser"
-//   ​​​​​
-//   <prototype>: Object { … }
-//   ​​​​
-//   1: Object { habit_id: 17, id: 4, name: "testuser2" }
-//   ​​​​
-//   length: 2
-//   ​​​​
-//   <prototype>: Array []
-//   ​​​
-//   end_time: "2024-06-29T03:47:35"
-//   ​​​
-//   id: 10
-//   ​​​
-//   messages: Array []
-//   ​​​
-//   name: "spooky dookie"
-//   ​​​
-//   reminders: Array []
-//   ​​​
-//   start_time: "2024-05-30T03:47:35"
-// }
-
 export interface HabitDuration {
   id?: string;
   habit_id?: string;
@@ -144,14 +97,3 @@ export type daily_tasks = {
   description: string;
 };
 
-export interface ReminderSchedule {
-  id: string;
-  text_template: string;
-  time: string;
-  requires_confirmation?: boolean;
-  is_active?: boolean;
-  habit_id?: string;
-  reminder_type?: string;
-  priority?: number;
-  day_indexes?: number[];
-}

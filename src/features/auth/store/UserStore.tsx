@@ -1,8 +1,7 @@
 import { Store as PullStateStore } from "pullstate";
-import { IUser, IHabit, IAlarm, ICharacter, ICommitment } from "../types";
-import { characters } from "../features/application/mock";
+import { IUser,  IAlarm, ICharacter } from "../types";
+import { characters } from "../../../mock";
 import { Preferences } from "@capacitor/preferences";
-import { getCommitments,getGroups } from "../utils/requests";
 
 const initialState: IUser = {
   isAuth: false,
@@ -11,36 +10,13 @@ const initialState: IUser = {
   token: "",
   avatar: characters[0], // Initialize habits as an empty array
   alarm: { hours: 0, minutes: 0, meridiem: "am" },
-  commitments: [],
-  groups: [],
-};
 
+};
 const userStore = new PullStateStore(initialState);
 
-// Existing actions
-const setUser = (user: IUser) => userStore.update(() => user);
-const setAuth = (isAuth: boolean) =>
-  userStore.update((state: IUser) => ({ ...state, isAuth }));
-const setUsername = (username: string) =>
-  userStore.update((state) => ({ ...state, username }));
-const setEmail = (email: string) =>
-  userStore.update((state) => ({ ...state, email }));
 const setAvatar = (avatar: ICharacter) =>
   userStore.update((state) => ({ ...state, avatar }));
 
-// New actions for managing habits
-const addHabit = (habit: IHabit) =>
-  userStore.update((state) => ({
-    ...state,
-    commitments: [...state.commitments, habit],
-  }));
-const removeHabit = (id: string) =>
-  userStore.update((state) => ({
-    ...state,
-    commitments: state.commitments.filter(
-      (commitment: ICommitment) => commitment.habit_id !== id
-    ),
-  }));
 const loginUser = ({
   username,
   token,
@@ -60,8 +36,6 @@ const logoutUser = () => {
     s.isAuth = false;
     s.username = "";
     s.token = "";
-    s.commitments = [];
-    s.groups = [];
     s.alarm = { hours: 0, minutes: 0, meridiem: "am" };
   });
 };
@@ -82,7 +56,7 @@ const logoutUser = () => {
 //   });
 // };
 
-const setUserState = (alarm: IAlarm) =>
+const setUserAlarm = (alarm: IAlarm) =>
   userStore.update((state) => ({ ...state, alarm: alarm }));
 
 export async function initializeUserState() {
@@ -91,7 +65,7 @@ export async function initializeUserState() {
   console.log(savedState);
   if (savedState && typeof savedState.value === "string") {
     const parsedState = JSON.parse(savedState.value);
-    userStore.update((state) => ({
+    userStore.update(() => ({
       ...parsedState,
     }));
   }
@@ -106,16 +80,8 @@ userStore.createReaction(
 // Export the store and actions
 export {
   userStore,
-  setUser,
-  setAuth,
-  setUsername,
-  setEmail,
   setAvatar,
-  addHabit,
-  removeHabit,
-  setUserState,
+  setUserAlarm,
   loginUser,
   logoutUser,
-  // getServerCommitments,
-  // getSererGroups,
 };

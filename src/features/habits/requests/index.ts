@@ -1,5 +1,5 @@
 
-import { request } from "../../application/lib/axios";
+import { request } from "../../../lib/axios";
 import { HabitDuration } from "../types";
 
 

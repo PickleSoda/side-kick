@@ -8,15 +8,14 @@ import {
   IonGrid,
   IonCol,
   IonRow,
-  IonItem,
   IonInput,
 } from "@ionic/react";
 import { useHistory } from "react-router-dom";
 import { chevronBackOutline, eyeOffOutline, eyeOutline, logoFacebook, logoGoogle, logoTwitter } from "ionicons/icons";
 import { useStoreState } from "pullstate";
-import { userStore } from "../../../store/userStore";
+import { userStore } from "../../auth/store/UserStore";
 import { registerRequest } from "../../../utils/requests";
-import BackgroundImg from "../../../public/img/bg-white.png";
+import BackgroundImg from "../../../../public/img/bg-white.png";
 import { useIonRouter } from "@ionic/react";
 
 const Signup = () => {

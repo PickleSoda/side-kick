@@ -1,6 +1,6 @@
 import dynamic from 'next/dynamic';
-
-const App = dynamic(() => import('../components/AppShell'), {
+import React from 'react';
+const App = dynamic(() => import('../features/application/AppShell'), {
   ssr: false,
 });
 

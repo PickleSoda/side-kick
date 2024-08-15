@@ -6,7 +6,6 @@ export interface IHabit {
     selectDate: Date;
     chosen: boolean;
     durations?: HabitDuration[];
-    reminder_schedules?: ReminderSchedule[];
     created?: string;
   }
 
@@ -31,15 +30,13 @@ export interface IHabit {
     title: string;
     description: string;
   };
-  
-export interface ReminderSchedule {
+  export interface ICommitment {
+    alarm_time: string;
+    creator_id: string;
+    habit_id: string;
     id: string;
-    text_template: string;
-    time: string;
-    requires_confirmation?: boolean;
-    is_active?: boolean;
-    habit_id?: string;
-    reminder_type?: string;
-    priority?: number;
-    day_indexes?: number[];
+    length_in_days: number;
+    start_time: string;
+    status: string;
+    habit_duration: HabitDuration;
   }

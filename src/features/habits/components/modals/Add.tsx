@@ -11,7 +11,6 @@ import {
  IonTextarea,
  IonLabel,
  IonItem,
- IonDatetime,
  IonList
 } from '@ionic/react';
 import { chevronBackOutline } from 'ionicons/icons';

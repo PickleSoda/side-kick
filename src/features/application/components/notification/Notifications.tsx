@@ -12,11 +12,11 @@ import {
   IonNote,
   IonLabel,
 } from '@ionic/react';
-import Store from '../../store';
-import { getNotifications } from '../../store/selectors';
+import Store from '../../../../store';
+import { getNotifications } from '../../../../store/selectors';
 
 import { close } from 'ionicons/icons';
-import { type NotificationItem } from '../../mock';
+import { type NotificationItem } from '../../../../mock';
 
 const NotificationItem = ({
   notification,

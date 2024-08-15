@@ -3,53 +3,42 @@ import {
   IonPage,
   IonHeader,
   IonToolbar,
-  IonTitle,
   IonContent,
   IonButton,
-  IonIcon,
   IonGrid,
   IonRow,
   IonImg,
 } from "@ionic/react";
-import ToolBar from "../../application/components/ui/ToolBar";
-import { useHistory } from "react-router";
-import ChooseHabitModal from "../components/modals/ChooseHabitModal";
-import { userStore, addHabit, removeHabit } from "../../../store/userStore";
-import Store from "../../../store";
+import ToolBar from "../../../application/components/ui/ToolBar";
+import ChooseHabitModal from "./ChooseHabitModal";
+import { userStore } from "../../../auth/store/UserStore";
+import { HabitStore, getHabitsFromServer } from "../../store/habitStore"
 import { useStoreState } from "pullstate";
-import { IHabit } from "../../../types";
+import { IHabit } from "../../types";
 
 const PickHabit = () => {
   const [showDetailModal, setShowDetailModal] = useState(false);
-  const history = useHistory();
-  const habits = useStoreState(Store, (s) => s.habits);
+  const habits = useStoreState(HabitStore, (s) => s.habits);
   const selectedCharacter = useStoreState(userStore, (s) => s.avatar);
-  const userHabits = useStoreState(userStore, (s) => s.commitments);
+  const commitments = useStoreState(HabitStore, (s) => s.commitments);
   const [extendedHabits, setExtendedHabits] = useState<IHabit[]>([]);
   const [selectedHabit, setSelectedHabit] = useState<IHabit | undefined>(undefined);
   useEffect(() => {
+    getHabitsFromServer();
     // Function to update the extendedHabits state
-    const updateExtendedHabits = () => {
-      const updatedHabits = habits.map((habit) => ({
-        ...habit,
-        chosen: userHabits?.some((userHabit) => userHabit.habit_duration.habit_id === habit.id),
-      }));
-      setExtendedHabits(updatedHabits);
-    };
+
 
     // Subscribe to changes in the userStore
-    const unsubscribe = userStore.subscribe(
+    const unsubscribe = HabitStore.subscribe(
       (s) => s.commitments,
       updateExtendedHabits
     );
-
     // Initial update
     updateExtendedHabits();
-    console.log(userHabits);
-
+    console.log(HabitStore);
     // Cleanup subscription on component unmount
     return () => unsubscribe();
-  }, [userHabits]);
+  }, [HabitStore]);
 
   const handleHabitClick = (habit: IHabit) => {
     if (habit.chosen) {
@@ -59,25 +48,28 @@ const PickHabit = () => {
     setSelectedHabit(habit);
     setShowDetailModal(true);
   };
-  const handleNext = () => {
-    history.push("/");
-  };
 
+  const updateExtendedHabits = () => {
+    const updatedHabits = habits.map((habit) => ({
+      ...habit,
+      chosen: commitments?.some((userHabit) => userHabit.habit_duration.habit_id === habit.id),
+    }));
+    setExtendedHabits(updatedHabits);
+  };
   return (
     <IonPage>
       <IonHeader translucent={true} className='shadow-none' mode='md'>
-      <IonToolbar className="transparent-bg ion-padding">
-      <ToolBar />
-      </IonToolbar>
+        <IonToolbar className="transparent-bg ion-padding">
+          <ToolBar />
+        </IonToolbar>
       </IonHeader>
       <IonContent className="ion-padding intro-bg" fullscreen>
-
         <IonGrid>
           <IonRow>
             {extendedHabits.map((habit, index) => (
               <IonButton
                 mode="ios"
-                key={index+ habit.name}
+                key={index + habit.name}
                 onClick={() => handleHabitClick(habit)}
                 className={`white-background min-w-[100px] font-bold ${habit.chosen ? "white-background" : "white-background-opacity"
                   }`}

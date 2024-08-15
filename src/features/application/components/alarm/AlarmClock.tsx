@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   IonGrid,
   IonCol,
   IonRow,
 } from "@ionic/react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { IAlarm } from "../types";
+import { IAlarm } from "../../types";
 
 
 interface IAlarmClockProps {

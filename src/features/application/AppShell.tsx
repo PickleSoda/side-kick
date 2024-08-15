@@ -1,23 +1,22 @@
+import React from 'react';
 import { IonApp, IonRouterOutlet, setupIonicReact } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import { Route } from 'react-router-dom';
-import Intro from '../intro/pages/Intro';
+import Intro from './layout/Intro';
 import Tabs from './layout/Tabs';
-import { useStoreState } from "pullstate";
-import { userStore } from "../../store/userStore";
+import { userStore, initializeUserState } from "../auth/store/UserStore";
 import { getCommitments, getGroups } from '../../utils/requests';
 import { useEffect, useState } from 'react';
 import { initializeAppState } from '../../store';
-import { initializeUserState } from '../../store/userStore';
 setupIonicReact({});
 
 const initUser = async () => {
   try {
     const commitments = await getCommitments();
     console.log('server commitments', commitments);
-    userStore.update((s) => {
-      s.commitments = commitments.data;
-    });
+    // userStore.update((s) => {
+    //   s.commitments = commitments.data;
+    // });
   }
   catch (err: any) {
     console.log(err);
@@ -25,9 +24,9 @@ const initUser = async () => {
   try {
     const groupChats = await getGroups();
     console.log('server group chats', groupChats);
-    userStore.update((s) => {
-      s.groups = groupChats.data;
-    });
+    // userStore.update((s) => {
+    //   s.groups = groupChats.data;
+    // });
   }
   catch (err: any) {
     console.log(err);
@@ -38,7 +37,7 @@ const initUser = async () => {
 const AppShell = () => {
 
   const [initialized, setInitialized] = useState(false);
-  const isAuthorized = useStoreState(userStore, (state) => state.token !== "");
+  const isAuthorized = userStore.useState((state) => state.token !== "");
 
   useEffect(() => {
     const init = async () => {
@@ -55,7 +54,7 @@ const AppShell = () => {
       initUser();
     }
   }, [isAuthorized]);
-  
+
   if (!initialized) {
     return <div>Loading...</div>; // Show loading indicator or a splash screen
   }

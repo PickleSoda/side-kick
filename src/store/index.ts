@@ -1,18 +1,11 @@
 import { Store as PullStateStore } from "pullstate";
 import { Preferences } from "@capacitor/preferences";
-import { getHabits } from "../utils/requests";
 import {
-  lists,
-  homeItems,
   notifications,
   settings,
-  TodoListItem,
-  HomeItem,
   NotificationItem,
   Settings,
-  habits,
-} from "../features/application/mock";
-import { IHabit } from "../types";
+} from "../mock";
 
 type StoreProps = {
   safeAreaTop: number;
@@ -20,11 +13,8 @@ type StoreProps = {
   menuOpen: boolean;
   notificationsOpen: boolean;
   currentPage: number | null;
-  lists: TodoListItem[];
   notifications: NotificationItem[];
   settings: Settings;
-  selectedList: TodoListItem | undefined;
-  habits: IHabit[];
 };
 
 const Store = new PullStateStore<StoreProps>({
@@ -33,11 +23,8 @@ const Store = new PullStateStore<StoreProps>({
   menuOpen: false,
   notificationsOpen: false,
   currentPage: null,
-  lists,
   notifications,
   settings,
-  selectedList: undefined,
-  habits: habits,
 });
 
 export default Store;
@@ -55,15 +42,6 @@ export async function initializeAppState() {
     } else {
       console.error("Saved state is not valid");
     }
-  }
-  try {
-    const habits = await getHabits();
-    console.log("server habits", habits);
-    Store.update((state) => {
-      state.habits = habits.data;
-    });
-  } catch (e) {
-    console.log(e);
   }
 }
 

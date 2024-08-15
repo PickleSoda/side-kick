@@ -1,3 +1,4 @@
+import React from "react"
 import {
     IonIcon,
     IonModal,
@@ -5,22 +6,16 @@ import {
     IonList,
     IonItem,
 } from "@ionic/react"
-import { heartCircle, menuOutline, navigate } from "ionicons/icons"
-import { motion } from "framer-motion"
-import { userStore } from "../../../../store/userStore"
-import Store from "../../../../store"
+import { heartCircle, menuOutline, } from "ionicons/icons"
+import { HabitStore } from "../../../habits/store/habitStore"
 import { useState } from "react"
 import DaysPassed from "./DaysPassed"
 const ToolBar = () => {
-    const commitments = userStore.useState((s) => s.commitments)
+    const commitments = HabitStore.useState((s) => s.commitments)
     const [selectedCommitment, setSelectedCommitment] = useState(commitments[0] || null)
-    const habits = Store.useState((s) => s.habits)
+    const habits = HabitStore.useState((s) => s.habits)
     const [isMenuOpen, setIsMenuOpen] = useState(false)
 
-    const variants = {
-        open: { opacity: 1, x: 0 },
-        close: { opacity: 0, y: "-100%" }
-    }
 
     const handleMenuClick = () => {
         setIsMenuOpen(!isMenuOpen)

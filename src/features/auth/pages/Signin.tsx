@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react";
 import {
   IonPage,
   IonContent,
-  IonImg,
-  IonIcon,
   IonButton,
   IonGrid,
   IonCol,
@@ -13,10 +11,8 @@ import {
   IonLabel,
 } from "@ionic/react";
 import { useIonRouter } from "@ionic/react";
-import { request } from "../../application/lib/axios";
-import { loginUser } from "../../../store/userStore";
+import { loginUser } from "../../auth/store/UserStore";
 import { useIonLoading } from '@ionic/react';
-import { Keyboard } from '@capacitor/keyboard';
 import { loginRequest } from "../../../utils/requests";
 
 

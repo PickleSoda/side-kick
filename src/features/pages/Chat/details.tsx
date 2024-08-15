@@ -1,46 +1,20 @@
-import { useStoreState } from 'pullstate';
-import { TodoListItem } from '../../application/mock';
-import Store from '../../../store';
-import * as selectors from '../../../store/selectors';
+import React from 'react';
 import {
   IonPage,
   IonHeader,
   IonToolbar,
-  IonTitle,
   IonContent,
-  IonItem,
-  IonLabel,
-  IonList,
   IonImg,
 } from '@ionic/react';
-import { userStore } from '../../../store/userStore';
+import { userStore } from '../../auth/store/UserStore';
 import ToolBar from '../../application/components/ui/ToolBar';
 
-const ListEntry = ({ list }: { list: TodoListItem }) => {
-  return (
-    <IonItem routerLink={`/chats/${list.id}`} className="list-entry">
-      <IonLabel>{list.name}</IonLabel>
-    </IonItem>
-  );
-};
 
-// const AllLists = () => {
-//   const lists = Store.useState(selectors.getLists);
-
-//   return (
-//     <>
-//       {lists.map((list:TodoListItem, i:number) => (
-//         <ListEntry list={list} key={i} />
-//       ))}
-//     </>
-//   );
-// };
-
-import max from "../../../public/img/max.jpg";
+import max from "../../../../public/img/max.jpg";
 
 const ChatDetails = () => {
 
-  const selectedCharacter = useStoreState(userStore, (s) => s.avatar);
+  const selectedCharacter = userStore.useState((s) => s.avatar);
   return (
     <IonPage>
       <IonHeader translucent={true} className='shadow-none' mode='md'>

@@ -1,3 +1,4 @@
+import React from 'react';
 import { Redirect, Route } from 'react-router-dom';
 import {
   IonRouterOutlet,
@@ -5,21 +6,19 @@ import {
   IonTabBar,
   IonTabButton,
   IonIcon,
-  IonImg,
   IonLabel,
 } from '@ionic/react';
-import { personOutline, chatbubbleEllipsesOutline, homeOutline, fingerPrintOutline,checkmarkOutline , gitBranchOutline } from 'ionicons/icons';
+import { personOutline, chatbubbleEllipsesOutline, homeOutline, fingerPrintOutline, gitBranchOutline } from 'ionicons/icons';
 import Home from '../../pages/Home';
 import Settings from '../../pages/Settings';
-import PickHabit from '../../habits/pages/Pick';
-
-import Chats from '../../chats/pages';
-import ChatDetails from '../../chats/pages/details';
+import PickHabit from '../../habits/components/modals/Pick';
+import Chats from '../../pages/Chat/index.tsx';
+import ChatDetails from '../../pages/Chat/details.tsx';
 import SingIn from '../../auth/pages/Signin';
 import Signup from '../../auth/pages/Signup';
-import ChooseCharacter from '../../intro/pages/ChooseCharacter';
-import Alarm from '../../intro/pages/Alarm';
-import Landing from '../../intro/pages/Landing';
+import ChooseCharacter from '../../pages/Intro/ChooseCharacter.tsx';
+import Alarm from '../../pages/Intro/Alarm.tsx';
+import Landing from '../../pages/Intro/Landing.tsx';
 import FingerPrint from '../../pages/Fingerprint';
 const Tabs = () => {
   return (

@@ -7,12 +7,11 @@ import {
   IonCard,
   IonCardContent,
   IonSpinner,
-  IonChip,
 } from "@ionic/react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
 
-import BackgroundImg from "../../../public/img/main-bg.png";
+import BackgroundImg from "../../../../public/img/main-bg.png";
 
 const Landing = () => {
   const history = useHistory();

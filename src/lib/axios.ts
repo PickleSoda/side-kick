@@ -7,7 +7,7 @@ import axios, {
   InternalAxiosRequestConfig,
 } from 'axios';
 axios.defaults.withCredentials = false;
-import { userStore } from '../../../store/userStore';
+import { userStore } from '../features/auth/store/UserStore';
 
 interface InternalCustomAxiosRequestConfig extends AxiosRequestConfig {
   _retry?: boolean;

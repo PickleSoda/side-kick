@@ -3,21 +3,16 @@ import {
   IonPage,
   IonContent,
   IonImg,
-  IonIcon,
   IonButton,
-  IonNavLink,
-  IonFooter,
-  IonToolbar,
-  IonTitle,
 } from "@ionic/react";
 import { useIonRouter } from "@ionic/react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Navigation } from "swiper/modules";
 import { chevronBackOutline } from "ionicons/icons";
-import { setAvatar } from "../../../store/userStore";
+import { setAvatar } from "../../auth/store/UserStore";
 import { useHistory } from "react-router-dom";
 
-import { characters } from "../../application/mock/index";
+import { characters } from "../../../mock/index";
 
 const ChooseCharacter = () => {
   console.log(characters);

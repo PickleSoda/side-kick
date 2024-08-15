@@ -5,7 +5,7 @@ import {
   IonRow,
 } from "@ionic/react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { IAlarm } from "../../../../../types";
+import { IAlarm } from "../../types";
 
 interface IHandshakeTimeProps {
   alarm?: IAlarm;
