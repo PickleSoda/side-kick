@@ -77,6 +77,9 @@ const ToolBar = () => {
                                 </IonItem>
                             ))
                         }
+                        <IonItem routerDirection="forward" routerLink="/habits/pick" onClick={()=> setIsMenuOpen(false)}>
+                            <p className="text-lg">Add New Habit</p>
+                        </IonItem>
                     </IonList>
                 </IonContent>
             </IonModal>

@@ -12,7 +12,7 @@ import {
 import ToolBar from "../../../application/components/ui/ToolBar";
 import ChooseHabitModal from "./ChooseHabitModal";
 import { userStore } from "../../../auth/store/UserStore";
-import { HabitStore, getHabitsFromServer } from "../../store/habitStore"
+import { HabitStore } from "../../store/habitStore"
 import { useStoreState } from "pullstate";
 import { IHabit } from "../../types";
 
@@ -24,10 +24,6 @@ const PickHabit = () => {
   const [extendedHabits, setExtendedHabits] = useState<IHabit[]>([]);
   const [selectedHabit, setSelectedHabit] = useState<IHabit | undefined>(undefined);
   useEffect(() => {
-    getHabitsFromServer();
-    // Function to update the extendedHabits state
-
-
     // Subscribe to changes in the userStore
     const unsubscribe = HabitStore.subscribe(
       (s) => s.commitments,

@@ -37,7 +37,7 @@ const AppShell = () => {
     console.log('groups', groups);
   }, [isAuthorized, commitments, groups]);
 
-  if (!initialized || isLoadingCommitments || isLoadingGroups) {
+  if (!initialized || ( isLoadingCommitments || isLoadingGroups )) {
     return <div>Loading...</div>; // Show loading indicator or a splash screen
   }
 

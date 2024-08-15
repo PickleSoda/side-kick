@@ -14,7 +14,7 @@ import { chevronBackOutline } from "ionicons/icons";
 import { useStoreState } from "pullstate";
 import { userStore, setUserAlarm } from "../../auth/store/UserStore";
 import { IAlarm } from "../../../types";
-import { useIonRouter } from "@ionic/react";
+import { useHistory } from "react-router-dom";
 
 const Alarm = () => {
 
@@ -52,12 +52,11 @@ const Alarm = () => {
   };
 
   const selectedCharacter = useStoreState(userStore, (s) => s.avatar);
-  const router = useIonRouter()
+  const history = useHistory();
 
   const handleNext = () => {
     setUserAlarm(alarm);
-    router.push('/signup', 'forward', 'replace')
-
+    history.push('/signup')
   };
   return (
     <IonPage>

@@ -6,6 +6,7 @@ import {
   IonIcon,
   IonContent,
   IonImg,
+  IonItem,
 } from '@ionic/react';
 import { arrowForward, chatbubbleEllipses, removeCircle } from 'ionicons/icons';
 import ToolBar from '../application/components/ui/ToolBar';
@@ -46,7 +47,10 @@ const Home = () => {
                 <p>nudge</p>
               </div>
               <div>
-                <IonIcon icon={chatbubbleEllipses} />
+                <IonItem routerDirection="forward" routerLink="/chats" className="white-background font-bold">
+
+                  <IonIcon icon={chatbubbleEllipses} />
+                </IonItem>
                 <p>chat</p>
               </div>
               <div>

@@ -5,10 +5,8 @@ import {
   IonImg,
   IonButton,
 } from "@ionic/react";
-import { useIonRouter } from "@ionic/react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Navigation } from "swiper/modules";
-import { chevronBackOutline } from "ionicons/icons";
 import { setAvatar } from "../../auth/store/UserStore";
 import { useHistory } from "react-router-dom";
 
@@ -16,13 +14,12 @@ import { characters } from "../../../mock/index";
 
 const ChooseCharacter = () => {
   console.log(characters);
-  const router = useIonRouter()
+  const history = useHistory();
   const handleNext = () => {
     setAvatar(characters[currentIndex]);
-    
+    history.push("/alarm");
   };
 
-  const history = useHistory();
 
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -62,7 +59,7 @@ const ChooseCharacter = () => {
             Choose your <span className="colored-text">character</span>
           </h1>
           <p>{characters[currentIndex].info}</p>
-          <IonButton expand="block" routerDirection="forward" routerLink="/alarm" onClick={handleNext} className="white-background font-bold">
+          <IonButton expand="block" onClick={handleNext} className="white-background font-bold">
           <p className="text-lg">
             NEXT
           </p>

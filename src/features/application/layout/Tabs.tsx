@@ -47,38 +47,22 @@ const Tabs = () => {
           <IonIcon icon={homeOutline} />
           <IonLabel>Home</IonLabel>
         </IonTabButton>
-        <IonTabButton tab="tab2" href="/habits/pick">
+        {/* <IonTabButton tab="tab2" href="/habits/pick">
           <IonIcon icon={gitBranchOutline} />
           <IonLabel>Habits</IonLabel>
-        </IonTabButton>
+        </IonTabButton> */}
         <IonTabButton tab="tab3" href="/fingerprint">
           <div className='circle'></div>
           <IonIcon icon={fingerPrintOutline} className='z-20 absolute h-10 w-10 text-white' />
         </IonTabButton>
-        <IonTabButton tab="tab4" href="/chats">
+        {/* <IonTabButton tab="tab4" href="/chats">
           <IonIcon icon={chatbubbleEllipsesOutline} />
           <IonLabel>Chats</IonLabel>
-        </IonTabButton>
+        </IonTabButton> */}
         <IonTabButton tab="tab5" href="/settings">
           <IonIcon icon={personOutline} />
           <IonLabel>Profile</IonLabel>
         </IonTabButton>
-        {/* <IonTabButton tab="tab6" href="/signin">
-          <IonIcon icon={personOutline} />
-          <IonLabel>signin</IonLabel>
-        </IonTabButton>
-        <IonTabButton tab="tab7" href="/intro/choosecharacter">
-          <IonIcon icon={personOutline} />
-          <IonLabel>choose</IonLabel>
-        </IonTabButton>
-        <IonTabButton tab="tab8" href="/intro/alarm">
-          <IonIcon icon={personOutline} />
-          <IonLabel>alarm</IonLabel>
-        </IonTabButton>
-        <IonTabButton tab="tab9" href="/intro/landing">
-          <IonIcon icon={personOutline} />
-          <IonLabel>landing</IonLabel>
-        </IonTabButton> */}
       </IonTabBar>
     </IonTabs>
   );
