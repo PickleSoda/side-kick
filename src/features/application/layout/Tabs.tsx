@@ -8,18 +8,14 @@ import {
   IonIcon,
   IonLabel,
 } from '@ionic/react';
-import { personOutline, chatbubbleEllipsesOutline, homeOutline, fingerPrintOutline, gitBranchOutline } from 'ionicons/icons';
+import { personOutline, homeOutline, fingerPrintOutline } from 'ionicons/icons';
 import Home from '../../pages/Home';
 import Settings from '../../pages/Settings';
 import PickHabit from '../../habits/components/modals/Pick';
-import Chats from '../../pages/Chat/index.tsx';
-import ChatDetails from '../../pages/Chat/details.tsx';
 import SingIn from '../../auth/pages/Signin';
 import Signup from '../../auth/pages/Signup';
-import ChooseCharacter from '../../pages/Intro/ChooseCharacter.tsx';
-import Alarm from '../../pages/Intro/Alarm.tsx';
-import Landing from '../../pages/Intro/Landing.tsx';
 import FingerPrint from '../../pages/Fingerprint';
+import GroupChat from '../../groups/components/GroupChat';
 const Tabs = () => {
   return (
     <IonTabs>
@@ -27,18 +23,14 @@ const Tabs = () => {
         <Route path="/home" render={() => <Home />} exact={true} />
         <Route path="/habits/pick" render={() => <PickHabit />} exact={true} />
         <Route
-          path="/chats/:listId"
-          render={() => <ChatDetails />}
+          path="/chat"
+          render={() => <GroupChat />}
           exact={true}
         />
-        <Route path="/chats" render={() => <Chats />} exact={true} />
         <Route path="/settings" render={() => <Settings />} exact={true} />
         <Route path="/fingerprint" render={() => <FingerPrint />} exact={true} />
         <Route path="/signin" render={() => <SingIn />} exact={true} />
         <Route path="/signup" render={() => <Signup />} exact={true} />
-        <Route path="/intro/choosecharacter" render={() => <ChooseCharacter />} exact={true} />
-        <Route path="/intro/alarm" render={() => <Alarm />} exact={true} />
-        <Route path="/intro/landing" render={() => <Landing />} exact={true} />
         <Route path="" render={() => <Redirect to="/home" />} exact={true} />
       </IonRouterOutlet>
 
@@ -47,19 +39,11 @@ const Tabs = () => {
           <IonIcon icon={homeOutline} />
           <IonLabel>Home</IonLabel>
         </IonTabButton>
-        {/* <IonTabButton tab="tab2" href="/habits/pick">
-          <IonIcon icon={gitBranchOutline} />
-          <IonLabel>Habits</IonLabel>
-        </IonTabButton> */}
-        <IonTabButton tab="tab3" href="/fingerprint">
+        <IonTabButton tab="tab2" href="/fingerprint">
           <div className='circle'></div>
           <IonIcon icon={fingerPrintOutline} className='z-20 absolute h-10 w-10 text-white' />
         </IonTabButton>
-        {/* <IonTabButton tab="tab4" href="/chats">
-          <IonIcon icon={chatbubbleEllipsesOutline} />
-          <IonLabel>Chats</IonLabel>
-        </IonTabButton> */}
-        <IonTabButton tab="tab5" href="/settings">
+        <IonTabButton tab="tab3" href="/settings">
           <IonIcon icon={personOutline} />
           <IonLabel>Profile</IonLabel>
         </IonTabButton>
