@@ -1,61 +1,43 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { IonApp, IonRouterOutlet, setupIonicReact } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import { Route } from 'react-router-dom';
 import Intro from './layout/Intro';
 import Tabs from './layout/Tabs';
 import { userStore, initializeUserState } from "../auth/store/UserStore";
-import { getCommitments, getGroups } from '../../utils/requests';
-import { useEffect, useState } from 'react';
-import { initializeAppState } from '../../store';
+import { useFetchCommitments } from '../habits/hooks/useFetchCommitments';
+import { useFetchGroups } from '../groups/hooks/useFetchGroups';
+import { useFetchHabits } from '../habits/hooks/useFetchHabits';
+
 setupIonicReact({});
 
-const initUser = async () => {
-  try {
-    const commitments = await getCommitments();
-    console.log('server commitments', commitments);
-    // userStore.update((s) => {
-    //   s.commitments = commitments.data;
-    // });
-  }
-  catch (err: any) {
-    console.log(err);
-  }
-  try {
-    const groupChats = await getGroups();
-    console.log('server group chats', groupChats);
-    // userStore.update((s) => {
-    //   s.groups = groupChats.data;
-    // });
-  }
-  catch (err: any) {
-    console.log(err);
-  }
-
-}
-
 const AppShell = () => {
-
   const [initialized, setInitialized] = useState(false);
   const isAuthorized = userStore.useState((state) => state.token !== "");
+
+  // Fetch data using TanStack Query hooks
+  const { data: commitments, isLoading: isLoadingCommitments } = useFetchCommitments();
+  const { data: groups, isLoading: isLoadingGroups } = useFetchGroups();
+  const { data: habits, isLoading: isLoadingHabits } = useFetchHabits();
 
   useEffect(() => {
     const init = async () => {
       await initializeUserState();
-      await initializeAppState();
       setInitialized(true);
-      console.log('initialized');
     };
 
     init();
   }, []);
+
   useEffect(() => {
     if (isAuthorized) {
-      initUser();
+      // Handle logic based on fetched commitments and groups
     }
-  }, [isAuthorized]);
+    console.log('commitments', commitments);
+    console.log('groups', groups);
+  }, [isAuthorized, commitments, groups]);
 
-  if (!initialized) {
+  if (!initialized || isLoadingCommitments || isLoadingGroups) {
     return <div>Loading...</div>; // Show loading indicator or a splash screen
   }
 
