@@ -10,9 +10,10 @@ import { heartCircle, menuOutline, } from "ionicons/icons"
 import { HabitStore } from "../../../habits/store/habitStore"
 import { useState } from "react"
 import DaysPassed from "./DaysPassed"
+import { ICommitment } from "../../../../types"
 const ToolBar = () => {
     const commitments = HabitStore.useState((s) => s.commitments)
-    const [selectedCommitment, setSelectedCommitment] = useState(commitments[0] || null)
+    const selectedCommitment = HabitStore.useState((s) => s.selectedCommitment)
     const habits = HabitStore.useState((s) => s.habits)
     const [isMenuOpen, setIsMenuOpen] = useState(false)
 
@@ -20,6 +21,13 @@ const ToolBar = () => {
     const handleMenuClick = () => {
         setIsMenuOpen(!isMenuOpen)
         console.log('menu clicked')
+    }
+    const handleCommitmentClick = (commitment: ICommitment) => {
+        console.log('commitment clicked')
+        HabitStore.update((s) => {
+            s.selectedCommitment = commitment
+        })
+        setIsMenuOpen(false)
     }
     return (
         <>
@@ -59,7 +67,7 @@ const ToolBar = () => {
 
                         {
                             commitments.map((commitment, index) => (
-                                <IonItem key={index} onClick={() => { setSelectedCommitment(commitment); setIsMenuOpen(false) }}>
+                                <IonItem key={index} onClick={() => handleCommitmentClick(commitment)}>
                                     <div className="flex justify-between items-center w-full">
                                         <div className="flex gap-1 text-lg">
                                             <IonIcon icon={heartCircle} style={{ width: '30px', height: '30px' }} />
@@ -77,7 +85,7 @@ const ToolBar = () => {
                                 </IonItem>
                             ))
                         }
-                        <IonItem routerDirection="forward" routerLink="/habits/pick" onClick={()=> setIsMenuOpen(false)}>
+                        <IonItem routerDirection="forward" routerLink="/habits/pick" onClick={() => setIsMenuOpen(false)}>
                             <p className="text-lg">Add New Habit</p>
                         </IonItem>
                     </IonList>

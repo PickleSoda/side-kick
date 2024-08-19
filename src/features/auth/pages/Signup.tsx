@@ -17,7 +17,6 @@ import { userStore } from "../../auth/store/UserStore";
 import { registerRequest } from "../../../utils/requests";
 import BackgroundImg from "../../../../public/img/bg-white.png";
 import { useIonRouter } from "@ionic/react";
-
 const Signup = () => {
   // Add your component's state and other initializations here
   const history = useHistory();
@@ -134,7 +133,7 @@ const Signup = () => {
             <IonCol>
               <IonInput
                 value={formData.email}
-                onInput={(e: any) => handleInputChange(e)}
+                onInput={(e: IonInputCustomEvent) => handleInputChange(e)}
                 className="sign-input-fields"
                 label="Email"
                 labelPlacement="floating"

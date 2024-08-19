@@ -10,6 +10,7 @@ export const useFetchCommitments = () => {
       const response = await getCommitments();
       HabitStore.update((state) => {
         state.commitments = response.data;
+        state.selectedCommitment = response.data[0] || null;
       });
       return response.data;
     },

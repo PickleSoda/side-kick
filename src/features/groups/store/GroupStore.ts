@@ -1,7 +1,7 @@
 import { Store as PullStateStore } from "pullstate";
-
+import { Group } from "../types";
 type GroupStoreProps = {
-    groups: [];
+    groups: Group[];
     };
 
 
