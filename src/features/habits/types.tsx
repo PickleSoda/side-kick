@@ -14,7 +14,7 @@ export interface IHabit {
     habit_id?: string;
     duration: number;
     notifications?: notifications[];
-    daily_tasks?: daily_tasks[];
+    daily_tasks?: daily_task[];
   }
   
   export type notifications = {
@@ -25,7 +25,7 @@ export interface IHabit {
     day_indexes: number[];
     time: string;
   };
-  export type daily_tasks = {
+  export type daily_task = {
     id: string;
     title: string;
     description: string;

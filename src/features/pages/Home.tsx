@@ -11,13 +11,14 @@ import {
 import { arrowForward, chatbubbleEllipses, removeCircle } from 'ionicons/icons';
 import ToolBar from '../application/components/ui/ToolBar';
 import { userStore } from '../auth/store/UserStore';
-import Markdown from 'react-markdown'
+import { HabitStore } from '../habits/store/habitStore';
+import DailyTask from '../habits/components/DailyTask';
 
 
-const markdown = '# Hi,*Pluto*!'
 const Home = () => {
   const selectedCharacter = userStore.useState((s) => s.avatar);
-
+  const selectedTasks = HabitStore.useState((s) => s.selectedCommitment?.habit_duration.daily_tasks);
+  console.log(selectedTasks);
   return (
     <IonPage>
       <IonHeader translucent={true} className='shadow-none' mode='md'>
@@ -27,9 +28,10 @@ const Home = () => {
       </IonHeader>
       <IonContent className="ion-padding" fullscreen>
         <div className='h-[75vh] flex flex-col justify-between items-center'>
-          <div className='text-xl text-center'>Your <br /> Journey</div>
-          <Markdown>{markdown}</Markdown>
-          <div className='text-3xl text-center'>Meditate <br /> for 5 minutes daily</div>
+          {
+            selectedTasks &&
+            <DailyTask selectedTask={selectedTasks[0]} />
+          }
           <div>
             <div className='flex justify-between w-full'>
               <IonImg
